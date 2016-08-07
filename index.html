@@ -9,13 +9,58 @@
 
 <body>
     <!-- id -->
-    <h1>
+    <h2>
 <div id="id">id</div>
-</h1>
+</h2>
     <script type="text/javascript">
     console.log($$('id'));
     </script>
     <!-- id -->
+    <hr/>
+    <!-- jsload, cssload -->
+    <h2>jsload, cssload</h2>
+    <script type="text/javascript">
+    $$T.cssload('http://mat1.gtimg.com/www/base/base.css', function() {
+        //console.log('base.css ok')
+    });
+    $$T.jsload('http://mat1.gtimg.com/www/js/newsapp/jsapi/news.js?_tsid=1', function() {
+        //检测系统新闻app/微信/浏览器
+        var CheckSystem = {
+            UA: navigator.userAgent.toLowerCase(),
+            isNewsApp: function() {
+                try {
+                    if (CheckSystem.UA.match(/qqnews/i) == 'qqnews') {
+                        return true;
+                    } else {
+                        return fasle;
+                    }
+                } catch (e) {}
+            },
+            isWeixin: function() {
+                try {
+                    if (CheckSystem.UA.match(/MicroMessenger/i) == 'micromessenger') {
+                        return true;
+                    } else {
+                        return fasle;
+                    }
+                } catch (e) {}
+            },
+            isiPhone: function() {
+                try {
+                    if (CheckSystem.UA.match(/iphone/i) == 'iphone') {
+                        return true;
+                    } else {
+                        return fasle;
+                    }
+                } catch (e) {}
+            }
+        }
+    });
+    </script>
+    <!-- jsload, cssload -->
+    <script type="text/javascript">
+    $$TB
+    </script>
 </body>
 
 </html>
