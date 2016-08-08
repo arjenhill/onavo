@@ -3,22 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>onavo.js</title>
+    <title>onavojs库</title>
     <script type="text/javascript" src="onavo.js"></script>
 </head>
 
 <body>
     <!-- id -->
     <h2>
-<div id="id">id</div>
+<div id="id">1.id : $$('id')</div>
 </h2>
     <script type="text/javascript">
-    console.log($$('id'));
+    $$('id')
     </script>
     <!-- id -->
     <hr/>
     <!-- jsload, cssload -->
-    <h2>jsload, cssload</h2>
+    <h2>2.jsload, cssload: $$T.jsload , $$T.cssload</h2>
     <script type="text/javascript">
     $$T.cssload('http://mat1.gtimg.com/www/base/base.css', function() {
         //console.log('base.css ok')
@@ -59,6 +59,8 @@
     </script>
     <!-- jsload, cssload -->
     <!-- 判断浏览器 -->
+    <hr/>
+    <h2>3.判断浏览器: $$TB.B , $$TB.IE() , $$TB.weixin()</h2>
     <script type="text/javascript">
     $$TB.B
     var flag = $$TB.IE();

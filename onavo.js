@@ -88,10 +88,18 @@ var $$, $$T, $$TB;
 				}
 			};
 			return false;
-		}
+		};
+		var weixin = function() {
+			if (ua.match(/MicroMessenger/i) == "micromessenger") {
+				return true;
+			} else {
+				return false;
+			};
+		};
 		return {
 			B: B,
-			IE: IE
+			IE: IE,
+			weixin: weixin
 		}
 	})(window.navigator.userAgent.toLowerCase());
 	// http://blog.csdn.net/zsj523/article/details/16802131
