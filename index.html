@@ -66,22 +66,50 @@
     var flag = $$TB.IE();
     if (flag) {
         //alert("11")
-    } else{
+    } else {
         //alert('22')
     }
     </script>
     <!-- 判断浏览器 -->
-
     <!-- 数组方法 -->
     <hr/>
     <h2>4.数组方法: $$A $$A.unique() , $$A.random() , $$A.shuffle(), $$A.contains() , $$A.removeAt(), $$A.remove() , $$A.compact() , $$A.pluck() , $$A.union(), $$A.intersect() , $$A.diff(), $$A.max() , $$A.min()</h2>
     <script type="text/javascript">
-       var arr = [2, 3, 3,'收到','阿萨德', 12,'阿萨德', 13, 2, 1, 2, 30];
-       //$$A.unique(arr) //数组去重
-       //$$A.random();  //在数组中随机取一个
+    var arr = [2, 3, 3, '收到', '阿萨德', 12, '阿萨德', 13, 2, 1, 2, 30];
+    //$$A.unique(arr) //数组去重
+    //$$A.random();  //在数组中随机取一个
     </script>
     <!-- 数组方法 -->
+    <!-- 字符串方法 -->
+    <hr/>
+    <h2>5.字符串方法： $$S $$S.camelize() , $$S.byteLen() , $$S.capitalize() , $$S.contains(), $$S.containsClass() , $$S.dasherize() , $$S.endsWith(), $$S.startsWith(), $$S.fillZero, $$S.print() , $$S.repeat(), $$S.stripTags(), $$S.trim(), $$S.truncate()</h2>
+    <script type="text/javascript">
+    var string_xx = "margin-top-padding-niu--hin-top-padding-niu--hi";
+    var string_2xx ="HI";
+    var ddx = {
+        name : 21323,
+        adssa :32213
+    }
+    //获得字符串字节长度
+    $$S.byteLen(string_xx, "utf-8")
+    //驼峰转化
+    $$S.camelize(string_xx)
+    //首字母大写
+    $$S.capitalize(string_xx)
+    //一个字符串是否包含另一个字符串
+    $$S.contains(string_xx, string_2xx)
 
+    //参2是参1的结尾么
+    $$S.endsWith(string_xx, string_2xx,true);
+
+    $$S.fillZero(string_2xx,100);
+
+    $$S.print(string_2xx)
+    $$S.repeat(string_xx,22)
+    $$S.repeat(string_xx,22)
+    $$S.truncate(string_xx)
+    </script>
+    <!-- 字符串方法 -->
 </body>
 
 </html>

@@ -1020,6 +1020,26 @@ body .markdown-body
 <h2 id="changelog"><a name="user-content-changelog" href="#changelog" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>change.log</h2>
 <ul>
 <li>
+<p>&ndash;2016年8月9日<br />
+&ndash;新增<strong>字符串</strong>处理 $$S方法<br />
+<pre><code>$$S.byteLen(str, charset) {String, String} 获得字符串字节长度,参数2 utf-8/utf8/utf-16/utf16
+$$S.camelize(target) {String} 驼峰转化 如margin-top转化为marginTop
+$$S.capitalize(target) {String} 首字母大写 
+$$S.contains(target, item) {String, String} 一个字符串是否包含另一个字符串
+$$S.containsClass(target, item, separator)  {String, String, String}// 类名中，参数1 是否包含参数2，类名中的分隔符
+$$S.dasherize(target) {String} 把字符串中的_转成-
+$$S.endsWith(target, item, ignorecase) {String, String, Boolean}参2是以参1的结尾么,参数3忽略大小写
+$$S.startsWith(arget, item, ignorecase) {String, String, Boolean} 参2是以参1的开始么
+$$S.fillZero(target, n) {String, Number} 向前补0
+$$S.print(str, object) {String, Object}模仿C语言print方法
+$$S.repeat(item, times) {String, Number} 字符串重复
+$$S.stripTags(target) {String} 去掉字符串内的THML标签
+$$S.trim(str) {String} 去掉空格
+$$S.truncate(target, len, truncation) {String, Number, String}字符串截断,默认length30，截断后符号默认'...'
+$$S.underscored(target) {String} 把驼峰转换成_
+</code></pre></p>
+</li>
+<li>
 <p>&ndash;2016年8月8日<br />
 &ndash;新增<strong>工具</strong>浏览器检 $$TB.B , $$TB.IE()全版本测方法<br />
 <pre><code>$$TB.B,

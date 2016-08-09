@@ -2,19 +2,20 @@
  * onavojs v0.14 
  * @ 开发 p_jiewwang p_dainli p_miyagong
  * { JavaScript 工具库 }
+ * github@ https://github.com/jiayi2/onavo
  * email:email@ahthw.com
  * @Organizations https://github.com/3JTeam
  * $$代表onavojs库/Object的对象
  */
 
-var $$, $$T, $$TB, $$A;
+var $$, $$T, $$TB, $$A, $$S;
 
 //; 防止多个文件压缩合并的语法错误
 ;
 //匿名的函数，为undefined是window的属性，声明为局部变量之后，在函数中如果再有变量与undefined做比较的话，程序就可以不用搜索undefined到window，可以提高程序的性能。
 (function(undefined) {
 	//代码开始
-	var O, T, TB, A;
+	var O, T, TB, A, S;
 
 	O = function(id) {
 		return "string" == typeof id ? document.getElementById(id) : id;
@@ -311,6 +312,152 @@ var $$, $$T, $$TB, $$A;
 
 	}();
 	/* 数组方法 e */
+	/* 字符串s */
+	S = {
+		// 去空格
+		trim: function(str) {
+			str = str.replace(/^\s+/, '');
+			for (var i = str.length - 1; i >= 0; i--) {
+				if (/\S/.test(str.charAt(i))) {
+					str = str.slice(0, i + 1);
+					break;
+				}
+			}
+			return str;
+		},
+		// 模仿C语言print方法
+		print: function(str, object) {
+			var arr = [].slice.call(arguments, 1),
+				index;
+			return str.replace(/#{([^{}]+)}/gm, function(match, name) {
+				index = Number(name);
+				if (index >= 0) {
+					return arr[index];
+				}
+				if (object && object[name] !== '') {
+					return object[name];
+				}
+				return '';
+			})
+		},
+		//补零
+		fillZero: function(target, n) {
+			var z = new Array(n).join('0'),
+				str = z + target,
+				result = str.slice(-n);
+			return result;
+			//return (Math.pow(10,n) + '' + target).slice(-n);
+		},
+		// 去掉script内部的html标签
+		stripTags: function(target) {
+			if (type.getType(target) === 'String') {
+				return target.replace(/<script[^>]*>(\S\s*?)<\/script>/img, '').replace(/<[^>]+>/g, '');
+			}
+		},
+		//首字母大写
+		capitalize: function(target) {
+			return target.charAt(0).toUpperCase() + target.slice(1).toLowerCase();
+		},
+		//驼峰转化（备用） 如margin-top转化为marginTop
+		// camelize: function(s) {
+		// 	return s.replace(/-([a-z])/ig, function(all, letter) {
+		// 		return letter.toUpperCase();
+		// 	});
+		// },
+		//_ - 转驼峰命名
+		camelize: function(target) {
+			if (target.indexOf('-') < 0 && target.indexOf('_') < 0) {
+				return target;
+			}
+			return target.replace(/[-_][^-_]/g, function(match) {
+				//console.log(match) 匹配测试
+				return match.charAt(1).toUpperCase();
+			})
+		},
+		// 把驼峰转换成_
+		underscored: function(target) {
+			return target.replace(/([a-z0-9])([A-Z])/g, '$1_$2').toLowerCase();
+		},
+		//把字符串中的_转成-
+		dasherize: function(target) {
+			return this.underscored(target).replace(/_/g, '-');
+		},
+		//字符串截断方法 目标 长度默认30，截断后符号默认...
+		truncate: function(target, len, truncation) {
+			len = len || 30;
+			truncation = truncation ? truncation : '...';
+			return (target.length > len) ? target.slice(0, (len - truncation.length)) + truncation : target.toString();
+		},
+		//获得字符串字节长度 参数2 utf-8 utf8 utf-16 utf16
+		byteLen: function(str, charset) {
+			var target = 0,
+				charCode,
+				i,
+				len;
+			charset = charset ? charset.toLowerCase() : '';
+			if (charset === 'utf-16' || charset === 'utf16') {
+				for (i = 0, len = str.length; i < len; i++) {
+					charCode = str.charCodeAt(i);
+					if (charCode <= 0xffff) {
+						target += 2;
+					} else {
+						target += 4;
+					}
+				}
+			} else {
+				for (i = 0, len = str.length; i < len; i++) {
+					charCode = str.charCodeAt(i);
+					if (charCode <= 0x007f) {
+						target += 1;
+					} else if (charCode <= 0x07ff) {
+						target += 2;
+					} else if (charCode <= 0xffff) {
+						target += 3;
+					} else {
+						target += 4;
+					}
+				}
+			}
+			return target;
+		},
+		//重复item,times次
+		repeat: function(item, times) {
+			var s = item,
+				target = '';
+			while (times > 0) {
+				if (times % 2 == 1) {
+					target += s;
+				}
+				if (times == 1) {
+					break;
+				}
+				s += s;
+				times = times >> 1;
+			}
+			return target;
+			//retrun new Array(times).join(item)
+		},
+		//参2是参1的结尾么？参数3忽略大小写
+		endsWith: function(target, item, ignorecase) {
+			var str = target.slice(-(item.length));
+			return ignorecase ? str.toLowerCase() === item.toLowerCase() : str === item;
+		},
+		//参数2是参数1的开头么？参数3忽略大小写
+		startsWith: function(target, item, ignorecase) {
+			var str = target.slice(0, item.length);
+			return ignorecase ? str.toLowerCase() === item.toLowerCase() : str === item;
+		},
+		// 类名中，参数1 是否包含参数2，类名中的分隔符
+		containsClass: function(target, item, separator) {
+			return separator ? (separator + target + separator).indexOf(separator + item + separator) > -1 : this.contains(target, item);
+		},
+		//判定一个字符串是否包含另一个字符串
+		contains: function(target, item) {
+			return target.indexOf(item) != -1;
+			//return target.indexOf(item) > -1;
+		}
+	};
+	/* 字符串e */
 	//代码结束
 
 	/*定义*/
@@ -318,5 +465,6 @@ var $$, $$T, $$TB, $$A;
 	$$T = T;
 	$$TB = TB;
 	$$A = A;
+	$$S = S;
 
 })();
