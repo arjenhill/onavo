@@ -1021,6 +1021,28 @@ body .markdown-body
 <ul>
 <li>
 <p>&ndash;2016年8月9日<br />
+&ndash; 新增<strong>Ajax</strong>扩展，支持json，xml，txt等get,post.<a href="http://115.29.139.162:10086/onavo/index.html">链接</a><br />
+&ndash;jx 可扩展 xml2array.js<a href="http://115.29.139.162:10086/ceshi/xmlArray/html.html">链接</a><br />
+<pre><code>//http://115.29.139.162:10086/ceshi/jx/index.html
+jx.load('json.json', function(data) {
+    console.log(data)
+}, 'json', 'get');
+//
+jx.load('xx.txt', function(data) {
+    console.log(data)
+}, 'text', 'post');
+
+jx.load('data.xml', function(xmlDoc) {
+    arr = xml2array(xmlDoc);
+    $(&quot;result&quot;).value = dump(arr);
+    $(&quot;loading-indicator&quot;).toggle();
+}, &quot;XML&quot;);
+</code></pre><br />
+&ndash; 新增<strong>原型方法</strong><br />
+<pre><code>$$.extend(destination, source, override) 扩展对象方法，这个用的很多
+$$.deepextend(destination, source)  参考jQuery的extend
+$$.extends(me, parent) 参考的$extends，（跟prototype的Class.create也类似）
+</code></pre><br />
 &ndash; 新增<strong>对象检测</strong> 8个方法<br />
 <pre><code>$$.type
 $$.type.getType(ele) {Object}

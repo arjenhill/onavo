@@ -4,6 +4,24 @@
 
 ##change.log
 - --2016年8月9日
+-- 新增**Ajax**扩展，支持json，xml，txt等get,post.[链接](http://115.29.139.162:10086/onavo/index.html)
+--jx 可扩展 xml2array.js[链接](http://115.29.139.162:10086/ceshi/xmlArray/html.html)
+```
+//http://115.29.139.162:10086/ceshi/jx/index.html
+jx.load('json.json', function(data) {
+    console.log(data)
+}, 'json', 'get');
+//
+jx.load('xx.txt', function(data) {
+    console.log(data)
+}, 'text', 'post');
+
+jx.load('data.xml', function(xmlDoc) {
+    arr = xml2array(xmlDoc);
+    $("result").value = dump(arr);
+    $("loading-indicator").toggle();
+}, "XML");
+```
 -- 新增**原型方法**
 ```
 $$.extend(destination, source, override) 扩展对象方法，这个用的很多
