@@ -1021,7 +1021,19 @@ body .markdown-body
 <ul>
 <li>
 <p>&ndash;2016年8月9日<br />
-&ndash; 新增<strong>DOM</strong>处理的几个方法<br />
+&ndash; 新增<strong>对象检测</strong> 8个方法<br />
+<pre><code>$$.type
+$$.type.getType(ele) {Object}
+$$.type.isArray(ele) {Object}
+$$.type.isBoolen(ele) {Object}
+$$.type.isFunction(ele) {Object}
+$$.type.isNull(ele) {Object}
+$$.type.isObject(ele) {Object}
+$$.type.isString(ele) {Object}
+$$.type.isUndefined(ele) {Object}
+</code></pre><br />
+&ndash; 移除<strong>DOM</strong>$$D.getType()方法，新增至$$.type.getTyp();<br />
+&ndash; 新增<strong>DOM</strong>的12个方法<br />
 <pre><code>$$D.getScrollTop(node) {DOM} 视窗滚动的scrollTop
 $$D.getScrollLeft(node) {DOM} 视窗滚动的scrollLeft
 $$D.compareDocument(a, b){DOM, DOM} 节点包含：b节点包含a
@@ -1029,6 +1041,11 @@ $$D.getRect(node) {DOM} 获取元素的窗口坐标
 $$D.getClientRect(node) {DOM} 获取当前元素相对浏览器窗口坐标
 $$D.curStyle(elem, name) {DOM, String} 获取元素样式对象 （CSSStyleDeclaration）
 $$D.setStyle(elems, style, value) {DOM, String, String}设置对象元素样式
+$$D.getSize(elems) {DOM} 获得DOM对象的盒模型BOX宽高 
+$$D.nextB(el) {DOM} 下一个兄弟元素
+$$D.nextB(el) {DOM} 上一个兄弟元素
+$$D.nextBs(el) {DOM} 本身后面的所有兄弟元素,不包括本身
+$$D.prevBs(el) {DOM} 本身前面的所有兄弟元素,不包括本身
 </code></pre><br />
 &ndash; 新增<strong>字符串</strong>处理 $$S 15个常用方法<br />
 <pre><code>$$S.byteLen(str, charset) {String, String} 获得字符串字节长度,参数2 utf-8/utf8/utf-16/utf16
@@ -1077,8 +1094,8 @@ $$A.min()
 &ndash; 初始项目<br />
 &ndash; 新增$$T.jsload，$$T.cssload方法<br />
 <pre><code>$$T,
-$$T.jsload,
-$$T.cssload
+$$T.jsload(),
+$$T.cssload()
 </code></pre></p>
 </li>
 </ul>

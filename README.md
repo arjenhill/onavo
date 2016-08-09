@@ -4,7 +4,26 @@
 
 ##change.log
 - --2016年8月9日
--- 新增**DOM**的7个方法
+-- 新增**原型方法**
+```
+$$.extend(destination, source, override) 扩展对象方法，这个用的很多
+$$.deepextend(destination, source)  参考jQuery的extend
+$$.extends(me, parent) 参考的$extends，（跟prototype的Class.create也类似）
+```
+-- 新增**对象检测** 8个方法
+```
+$$.type
+$$.type.getType(ele) {Object}
+$$.type.isArray(ele) {Object}
+$$.type.isBoolen(ele) {Object}
+$$.type.isFunction(ele) {Object}
+$$.type.isNull(ele) {Object}
+$$.type.isObject(ele) {Object}
+$$.type.isString(ele) {Object}
+$$.type.isUndefined(ele) {Object}
+```
+-- 移除**DOM**$$D.getType()方法，新增至$$.type.getTyp();
+-- 新增**DOM**的12个方法
 ```
 $$D.getScrollTop(node) {DOM} 视窗滚动的scrollTop
 $$D.getScrollLeft(node) {DOM} 视窗滚动的scrollLeft
@@ -13,6 +32,11 @@ $$D.getRect(node) {DOM} 获取元素的窗口坐标
 $$D.getClientRect(node) {DOM} 获取当前元素相对浏览器窗口坐标
 $$D.curStyle(elem, name) {DOM, String} 获取元素样式对象 （CSSStyleDeclaration）
 $$D.setStyle(elems, style, value) {DOM, String, String}设置对象元素样式
+$$D.getSize(elems) {DOM} 获得DOM对象的盒模型BOX宽高 
+$$D.nextB(el) {DOM} 下一个兄弟元素
+$$D.nextB(el) {DOM} 上一个兄弟元素
+$$D.nextBs(el) {DOM} 本身后面的所有兄弟元素,不包括本身
+$$D.prevBs(el) {DOM} 本身前面的所有兄弟元素,不包括本身
 ```
 -- 新增**字符串**处理 $$S 15个常用方法
 ```
@@ -64,8 +88,8 @@ $$A.min()
 -- 新增$$T.jsload，$$T.cssload方法
 ```
 $$T,
-$$T.jsload,
-$$T.cssload
+$$T.jsload(),
+$$T.cssload()
 ```
 
 ##demo

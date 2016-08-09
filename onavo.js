@@ -20,7 +20,86 @@ var $$, $$T, $$TB, $$A, $$S, $$D;
 	O = function(id) {
 		return "string" == typeof id ? document.getElementById(id) : id;
 	};
-
+	/* 对象检测 */
+	O.type = {
+		getType: function(ele) {
+			if (!ele) return undefined;
+			if (window == document && document != window) {
+				return 'window';
+			} else if (ele.nodeType === 9) {
+				return 'document';
+			} else if (ele.callee) {
+				return 'arguments';
+			} else if (isFinite(ele.length) && ele.item) {
+				return 'nodeList';
+			} else {
+				var temp = Object.prototype.toString.call(ele),
+					reg = /\[object (.*)\]/,
+					arr = reg.exec(temp);
+				return arr[1].toLowerCase();
+			}
+		},
+		isArray: function(ele) {
+			return (this.getType(ele) === 'array') ? true : false;
+		},
+		isFunction: function(ele) {
+			return (this.getType(ele) === 'function') ? true : false;
+		},
+		isObject: function(ele) {
+			return (this.getType(ele) === 'object') ? true : false;
+		},
+		isString: function(ele) {
+			return (this.getType(ele) === 'string') ? true : false;
+		},
+		isNumber: function(ele) {
+			return (this.getType(ele) === 'number') ? true : false;
+		},
+		isBoolen: function(ele) {
+			return (this.getType(ele) === 'boolean') ? true : false;
+		},
+		isUndefined: function(ele) {
+			return (this.getType(ele) === 'undefined') ? true : false;
+		},
+		isNull: function(ele) {
+			return (this.getType(ele) === 'null') ? true : false;
+		}
+	};
+	/* 扩展对象 */
+	//防止非prototype属性方法的继承
+	O.emptyFun = function() {};
+	O.extend = function(destination, source, override) {
+		if (override === undefined) override = true;
+		for (var property in source) {
+			if (override || !(property in destination)) {
+				destination[property] = source[property];
+			}
+		}
+		return destination;
+	};
+	/** 数组深扩展 **/
+	//参考jQuery的extend
+	O.deepextend = function(destination, source) {
+		for (var property in source) {
+			var copy = source[property];
+			if (destination === copy) continue;
+			if (typeof copy === "object") {
+				destination[property] = arguments.callee(destination[property] || {}, copy);
+			} else {
+				destination[property] = copy;
+			}
+		}
+		return destination;
+	};
+	//参考的$extends
+	O.extends = function(me, parent) {
+		var ins = function() {
+			me.apply(this, arguments);
+		};
+		var subclass = function() {};
+		subclass.prototype = parent.prototype;
+		ins.prototype = new subclass;
+		return ins;
+	};
 	/* tools s */
 	T = {
 		//jsload 
@@ -620,6 +699,34 @@ var $$, $$T, $$TB, $$A, $$S, $$D;
 				"width": width,
 				"height": height
 			};
+		},
+		//下一个兄弟元素
+		nextB: function(el) {
+			return (el.nextElementSibling) ? el.nextElementSibling : el.nextSibling;
+		},
+		//上一个兄弟元素
+		prevB: function(el) {
+			return (el.previousElementSibling) ? el.previousElementSibling : el.previousSibling;
+		},
+		// 本身后面的所有兄弟元素,不包括本身
+		nextBs: function(el) {
+			var arr = [],
+				curr = this.nextB(el);
+			while (curr && curr.nodeType === 1) {
+				arr.push(curr);
+				curr = this.nextB(curr);
+			}
+			return arr;
+		},
+		// 本身前面的所有兄弟元素,不包括本身
+		prevBs: function(el) {
+			var arr = [],
+				curr = this.prevB(el);
+			while (curr && curr.nodeType === 1) {
+				arr.push(curr);
+				curr = this.prevB(curr);
+			}
+			return arr;
 		}
 	};
 	/* dom e*/
