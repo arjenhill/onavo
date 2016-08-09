@@ -8,14 +8,14 @@
  * $$代表onavojs库/Object的对象
  */
 
-var $$, $$T, $$TB, $$A, $$S;
+var $$, $$T, $$TB, $$A, $$S, $$D;
 
 //; 防止多个文件压缩合并的语法错误
 ;
 //匿名的函数，为undefined是window的属性，声明为局部变量之后，在函数中如果再有变量与undefined做比较的话，程序就可以不用搜索undefined到window，可以提高程序的性能。
 (function(undefined) {
 	//代码开始
-	var O, T, TB, A, S;
+	var O, T, TB, A, S, D;
 
 	O = function(id) {
 		return "string" == typeof id ? document.getElementById(id) : id;
@@ -458,6 +458,171 @@ var $$, $$T, $$TB, $$A, $$S;
 		}
 	};
 	/* 字符串e */
+	/* dom s */
+	D = {
+		//滚动的scrollTop
+		getScrollTop: function(node) {
+			var doc = node ? node.ownerDocument : document;
+			return doc.documentElement.scrollTop || doc.body.scrollTop;
+		},
+		//滚动的scrollLeft
+		getScrollLeft: function(node) {
+			var doc = node ? node.ownerDocument : document;
+			return doc.documentElement.scrollLeft || doc.body.scrollLeft;
+		},
+		//扩展 NodeA.compareDocumentPosition(NodeB)
+		// 000000         0              元素一致
+		// 000001         1              节点在不同的文档（或者一个在文档之外）
+		// 000010         2              节点 B 在节点 A 之前
+		// 000100         4              节点 A 在节点 B 之前
+		// 001000         8              节点 B 包含节点 A
+		// 010000         16             节点 A 包含节点 B
+		// 100000         32             浏览器的私有使用
+		compareDocument: document.defaultView ? function(a, b) {
+			return !!(a.compareDocumentPosition(b) & 16);
+		} : function(a, b) {
+			return a != b && a.compareDocument(b);
+		},
+		getRect: function(node) {
+			var left = 0,
+				top = 0,
+				right = 0,
+				bottom = 0;
+			if (!node.getBoundingClientRect || TB.IE().version == 8) {
+				var n = node;
+				while (n) {
+					left += n.offsetLeft, top += n.offsetTop;
+					n = n.offsetParent;
+				};
+				right = left + node.offsetWidth;
+				bottom = top + node.offsetHeight;
+			} else {
+				var rect = node.getBoundingClientRect();
+				left = right = D.getScrollLeft(node);
+				top = bottom = D.getScrollTop(node);
+				left += rect.left;
+				right += rect.right;
+				top += rect.top;
+				bottom += rect.bottom;
+			};
+			return {
+				"left": left,
+				"top": top,
+				"right": right,
+				"bottom": bottom
+			};
+		},
+		getClientRect: function(node) {
+			var rect = D.getRect(node),
+				sLeft = D.getScrollLeft(node),
+				sTop = D.getScrollTop(node);
+			rect.left -= sLeft;
+			rect.right -= sLeft;
+			rect.top -= sTop;
+			rect.bottom -= sTop;
+			return rect;
+		},
+		curStyle: document.defaultView ? function(elem) {
+			return document.defaultView.getComputedStyle(elem, null);
+		} : function(elem) {
+			return elem.currentStyle;
+		},
+		getStyle: document.defaultView ? function(elem, name) {
+			var style = document.defaultView.getComputedStyle(elem, null);
+			return name in style ? style[name] : style.getPropertyValue(name);
+		} : function(elem, name) {
+			var style = elem.style,
+				curStyle = elem.currentStyle;
+			//透明度 from youa
+			if (name == "opacity") {
+				if (/alpha\(opacity=(.*)\)/i.test(curStyle.filter)) {
+					var opacity = parseFloat(RegExp.$1);
+					return opacity ? opacity / 100 : 0;
+				}
+				return 1;
+			}
+			if (name == "float") {
+				name = "styleFloat";
+			}
+			var ret = curStyle[name] || curStyle[S.camelize(name)];
+			//单位转换 from jqury
+			if (!/^-?\d+(?:px)?$/i.test(ret) && /^\-?\d/.test(ret)) {
+				var left = style.left,
+					rtStyle = elem.runtimeStyle,
+					rsLeft = rtStyle.left;
+
+				rtStyle.left = curStyle.left;
+				style.left = ret || 0;
+				ret = style.pixelLeft + "px";
+
+				style.left = left;
+				rtStyle.left = rsLeft;
+			}
+			return ret;
+		},
+		setStyle: function(elems, style, value) {
+			if (!elems.length) {
+				elems = [elems];
+			}
+			if (typeof style == "string") {
+				var s = style;
+				style = {};
+				style[s] = value;
+			}
+			A.forEach(elems, function(elem) {
+				for (var name in style) {
+					var value = style[name];
+					if (name == "opacity" && B.ie) {
+						//ie透明度设置 from jquery
+						elem.style.filter = (elem.currentStyle && elem.currentStyle.filter || "").replace(/alpha\([^)]*\)/, "") + " alpha(opacity=" + (value * 100 | 0) + ")";
+					} else if (name == "float") {
+						elem.style[B.ie ? "styleFloat" : "cssFloat"] = value;
+					} else {
+						elem.style[S.camelize(name)] = value;
+					}
+				};
+			});
+		},
+		getSize: function(elem) {
+			var width = elem.offsetWidth,
+				height = elem.offsetHeight;
+			if (!width && !height) {
+				var repair = !D.contains(document.body, elem),
+					parent;
+				if (repair) { //如果元素不在body上
+					parent = elem.parentNode;
+					document.body.insertBefore(elem, document.body.childNodes[0]);
+				}
+				var style = elem.style,
+					cssShow = {
+						position: "absolute",
+						visibility: "hidden",
+						display: "block",
+						left: "-9999px",
+						top: "-9999px"
+					},
+					cssBack = {
+						position: style.position,
+						visibility: style.visibility,
+						display: style.display,
+						left: style.left,
+						top: style.top
+					};
+				D.setStyle(elem, cssShow);
+				width = elem.offsetWidth;
+				height = elem.offsetHeight;
+				D.setStyle(elem, cssBack);
+				if (repair) {
+					parent ? parent.appendChild(elem) : document.body.removeChild(elem);
+				}
+			}
+			return {
+				"width": width,
+				"height": height
+			};
+		}
+	};
+	/* dom e*/
 	//代码结束
 
 	/*定义*/
@@ -466,5 +631,6 @@ var $$, $$T, $$TB, $$A, $$S;
 	$$TB = TB;
 	$$A = A;
 	$$S = S;
+	$$D = D;
 
 })();

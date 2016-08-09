@@ -5,12 +5,18 @@
     <meta charset="UTF-8">
     <title>onavojs库</title>
     <script type="text/javascript" src="onavo.js"></script>
+    <style type="text/css">
+        #id{width:100px;height:100px;background:#ff00ff;display:inline-block;}
+    </style>
 </head>
 
 <body>
     <!-- id -->
     <h2>
-<div id="id">1.id : $$('id')</div>
+<div id="id">1.id : $$('id')
+<div id="id2"></div>
+</div>
+<div id="id3"></div>
 </h2>
     <script type="text/javascript">
     $$('id')
@@ -110,6 +116,24 @@
     $$S.truncate(string_xx)
     </script>
     <!-- 字符串方法 -->
+
+    <!-- dom方法 -->
+    <hr/>
+    <h2 id="id4">6.dom方法 : $$D.setStyle(), $$D.curStyle() , $$D.getClientRect(), $$D.getRect(),$$D.compareDocument(),  $$D.getScrollLeft(), $$D.getScrollTop()</h2>
+    <script type="text/javascript">
+     var id = $$('id');
+     var id2 = $$('id2');
+     var id3 = $$('id3');
+     var id4 = $$('id4');
+     $$D.getScrollTop(id);
+     $$D.compareDocument(id,id2)
+     $$D.compareDocument(id2,id3)   
+     $$D.getRect(id)  
+     $$D.curStyle(id).backgroundColor
+     $$D.curStyle(id2).height
+     //$$D.setStyle(id,'height','10px')
+    </script>
+    <!-- dom方法 -->
 </body>
 
 </html>

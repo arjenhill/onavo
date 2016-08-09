@@ -4,7 +4,17 @@
 
 ##change.log
 - --2016年8月9日
---新增**字符串**处理 $$S 15个常用方法
+-- 新增**DOM**的7个方法
+```
+$$D.getScrollTop(node) {DOM} 视窗滚动的scrollTop
+$$D.getScrollLeft(node) {DOM} 视窗滚动的scrollLeft
+$$D.compareDocument(a, b){DOM, DOM} 节点包含：b节点包含a
+$$D.getRect(node) {DOM} 获取元素的窗口坐标
+$$D.getClientRect(node) {DOM} 获取当前元素相对浏览器窗口坐标
+$$D.curStyle(elem, name) {DOM, String} 获取元素样式对象 （CSSStyleDeclaration）
+$$D.setStyle(elems, style, value) {DOM, String, String}设置对象元素样式
+```
+-- 新增**字符串**处理 $$S 15个常用方法
 ```
 $$S.byteLen(str, charset) {String, String} 获得字符串字节长度,参数2 utf-8/utf8/utf-16/utf16
 $$S.camelize(target) {String} 驼峰转化 如margin-top转化为marginTop
@@ -25,7 +35,7 @@ $$S.underscored(target) {String} 把驼峰转换成_
 
 
 - --2016年8月8日
---新增**工具**浏览器检 $$TB.B , $$TB.IE()全版本测方法
+-- 新增**工具**浏览器检 $$TB.B , $$TB.IE()全版本测方法
 ```
 $$TB.B,
 $$TB.IE(),
