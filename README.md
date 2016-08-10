@@ -4,9 +4,9 @@
 
 ##change.log
 - --2016年8月10日  
--- 修复es5 Arrary.indexOf()应用错误（polyfill）  
--- 进入单元工具测试（jasmine），修复$$A.shuffle(arr),形参为空的错误。  
--- **$$D.compareDocument() 为 $$D.contains() [ie检测兼容]  
+-- 修复es5 Arrary.indexOf()应用错误（polyfill）[ie检测兼容]  
+-- 进入单元工具测试（jasmine），修复$$A.shuffle(arr)，形参为空的错误。  
+-- **修改**$$D.compareDocument() 为 $$D.contains() [ie检测兼容]  
 -- **修改**$$.extends命名为$$.warpp [ie检测兼容]  
 -- 新增**Event** $$E方法  
 ```
