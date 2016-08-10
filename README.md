@@ -4,7 +4,10 @@
 
 ##change.log
 - --2016年8月10日  
-
+-- 修复es5 Arrary.indexOf()应用错误（polyfill）
+-- 进入单元工具测试（jasmine），修复$$A.shuffle(arr),形参为空的错误。
+-- **$$D.compareDocument() 为 $$D.contains() [ie检测兼容]
+-- **修改**$$.extends命名为$$.warpp [ie检测兼容]
 -- 新增**Event** $$E方法
 ```
 $$E.addEvent(element, type, handler)
@@ -19,7 +22,6 @@ $$F.bindAsEventListener(fun, thisp)
 
 
 - --2016年8月9日  
-
 -- 新增**Ajax**扩展:$$jx[链接](http://115.29.139.162:10086/ceshi/jx/index.html)，支持json，xml，txt等get,post.[链接](http://115.29.139.162:10086/onavo/index.html)xhr请求。
 --jx 可扩展 xml2array.js[链接](http://115.29.139.162:10086/ceshi/xmlArray/html.html)
 ```
@@ -33,7 +35,7 @@ $$jx.load('json.json', function(data) {
 ```
 $$.extend(destination, source, override) 扩展对象方法，这个用的很多
 $$.deepextend(destination, source)  参考jQuery的extend
-$$.extends(me, parent) 参考的$extends，（跟prototype的Class.create也类似）
+$$.warpp(me, parent) 参考的$extends，（跟prototype的Class.create也类似）
 ```
 -- 新增**对象检测** 8个方法
 ```
@@ -52,7 +54,7 @@ $$.type.isUndefined(ele) {Object}
 ```
 $$D.getScrollTop(node) {DOM} 视窗滚动的scrollTop
 $$D.getScrollLeft(node) {DOM} 视窗滚动的scrollLeft
-$$D.compareDocument(a, b){DOM, DOM} 节点包含：b节点包含a
+$$D.contains(a, b){DOM, DOM} 节点包含：b节点包含a
 $$D.getRect(node) {DOM} 获取元素的窗口坐标
 $$D.getClientRect(node) {DOM} 获取当前元素相对浏览器窗口坐标
 $$D.curStyle(elem, name) {DOM, String} 获取元素样式对象 （CSSStyleDeclaration）
@@ -84,7 +86,6 @@ $$S.underscored(target) {String} 把驼峰转换成_
 
 
 - --2016年8月8日  
-
 -- 新增**工具**浏览器检 $$TB.B , $$TB.IE()全版本测方法
 ```
 $$TB.B,
@@ -110,7 +111,6 @@ $$A.min()
 ```
 
 - --2016年8月7日  
-
 -- 初始项目
 -- 新增$$T.jsload，$$T.cssload方法
 ```
@@ -120,6 +120,5 @@ $$T.cssload()
 ```
 
 ##demo
-
 - 传送：[链接](http://115.29.139.162:10086/onavo/index.html)
 - README：[readme](http://115.29.139.162:10086/onavo/README.html)

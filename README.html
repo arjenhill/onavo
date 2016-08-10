@@ -1021,12 +1021,16 @@ body .markdown-body
 <ul>
 <li>
 <p>&ndash;2016年8月10日<br />
-&ndash; 新增<strong>Event</strong> $$E方法<br />
+&ndash; 修复es5 Arrary.indexOf()应用错误（polyfill）<br />
+&ndash; 进入单元工具测试（jasmine），修复$$A.shuffle(arr),形参为空的错误。<br />
+&ndash; <strong>$$D.compareDocument() 为 $$D.contains() [ie检测兼容]<br />
+&ndash; </strong>修改<strong>$$.extends命名为$$.warpp [ie检测兼容]<br />
+&ndash; 新增</strong>Event<strong> $$E方法<br />
 <pre><code>$$E.addEvent(element, type, handler)
 $$E.removeEvent(element, type, handler)
 $$E.fixEvent(event)
 </code></pre><br />
-&ndash; 新增<strong>Function</strong> $$F方法<br />
+&ndash; 新增</strong>Function** $$F方法<br />
 <pre><code>$$F.bind(fun, thisp)
 $$F.bindAsEventListener(fun, thisp)
 </code></pre></p>
@@ -1044,7 +1048,7 @@ $$jx.load('json.json', function(data) {
 &ndash; 新增<strong>原型方法</strong><br />
 <pre><code>$$.extend(destination, source, override) 扩展对象方法，这个用的很多
 $$.deepextend(destination, source)  参考jQuery的extend
-$$.extends(me, parent) 参考的$extends，（跟prototype的Class.create也类似）
+$$.warpp(me, parent) 参考的$extends，（跟prototype的Class.create也类似）
 </code></pre><br />
 &ndash; 新增<strong>对象检测</strong> 8个方法<br />
 <pre><code>$$.type
@@ -1061,7 +1065,7 @@ $$.type.isUndefined(ele) {Object}
 &ndash; 新增<strong>DOM</strong>的12个方法<br />
 <pre><code>$$D.getScrollTop(node) {DOM} 视窗滚动的scrollTop
 $$D.getScrollLeft(node) {DOM} 视窗滚动的scrollLeft
-$$D.compareDocument(a, b){DOM, DOM} 节点包含：b节点包含a
+$$D.contains(a, b){DOM, DOM} 节点包含：b节点包含a
 $$D.getRect(node) {DOM} 获取元素的窗口坐标
 $$D.getClientRect(node) {DOM} 获取当前元素相对浏览器窗口坐标
 $$D.curStyle(elem, name) {DOM, String} 获取元素样式对象 （CSSStyleDeclaration）

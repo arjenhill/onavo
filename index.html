@@ -7,6 +7,7 @@
     <script type="text/javascript" src="onavo.js"></script>
     <style type="text/css">
         #id{width:100px;height:100px;background:#ff00ff;display:inline-block;}
+        #textarea-log{display:inline-block;}
     </style>
 </head>
 
@@ -16,6 +17,8 @@
 <div id="id">1.id : $$('id')
 <div id="id2"></div>
 </div>
+<br/>
+<textarea id="textarea-log" cols="60" rows="5"></textarea>
 <div id="id3"></div>
 </h2>
     <script type="text/javascript">
@@ -119,15 +122,15 @@
 
     <!-- dom方法 -->
     <hr/>
-    <h2 id="id4">6.dom方法 : $$D.setStyle(), $$D.curStyle() , $$D.getClientRect(), $$D.getRect(),$$D.compareDocument(),  $$D.getScrollLeft(), $$D.getScrollTop() ，$$D.nextB() ，$$D.nextB() , $$D.nextBs(), $$D.prevBs(), $$D.getType() </h2>
+    <h2 id="id4">6.dom方法 : $$D.setStyle(), $$D.curStyle() , $$D.getClientRect(), $$D.getRect(),$$D.contains(),  $$D.getScrollLeft(), $$D.getScrollTop() ，$$D.nextB() ，$$D.nextB() , $$D.nextBs(), $$D.prevBs(), $$D.getType() </h2>
     <script type="text/javascript">
      var id = $$('id');
      var id2 = $$('id2');
      var id3 = $$('id3');
      var id4 = $$('id4');
      $$D.getScrollTop(id);
-     $$D.compareDocument(id,id2)
-     $$D.compareDocument(id2,id3)   
+     $$D.contains(id,id2)
+     $$D.contains(id2,id3)   
      $$D.getRect(id)  
      $$D.curStyle(id).backgroundColor
      $$D.curStyle(id2).height
@@ -137,7 +140,7 @@
     <!-- dom方法 -->
     <!-- 原型方法 -->
     <hr/>
-    <h2>7.原型方法 $$.extend() , $$.deepextend(), $$.extends()</h2>
+    <h2>7.原型方法 $$.extend() , $$.deepextend(), $$.warpp()</h2>
     <!-- 原型方法 -->
 
     <hr/>
@@ -165,6 +168,22 @@
     <!-- Event -->
     <hr/>
     <h2>12.Event方法 ：$$E.addEvent()，$$E.removeEvent() , $$E.fixEvent()</h2>
+    <script type="text/javascript">
+    //http://www.w3school.com.cn/jsref/dom_obj_event.asp
+        var logEl = $$('textarea-log');
+        //fix ie
+        function logEvent(type) {
+            logEl.innerHTML = logEl.innerHTML + '\n' + new Date().toLocaleTimeString() + ' - ' + type;
+            logEl.scrollTop = logEl.scrollHeight;
+        }        
+        $$E.addEvent(id,'touchstart',function(event){
+            logEvent(event)
+        });
+        $$E.addEvent(id,'click',function(event){
+            $$E.fixEvent(event)
+            logEvent("click")
+        });
+    </script>
     <!-- Event -->
 </body>
 

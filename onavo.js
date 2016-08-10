@@ -1,5 +1,5 @@
 /**
- * onavojs v0.15 
+ * onavojs v0.16 
  * @ 开发 p_jiewwang p_dainli p_miyagong
  * { JavaScript 工具库 }
  * github@ https://github.com/jiayi2/onavo
@@ -7,7 +7,37 @@
  * @Organizations https://github.com/3JTeam
  * $$代表onavojs库/Object的对象
  */
-
+/* polyfill */
+// Production steps of ECMA-262, Edition 5, 15.4.4.14
+if (!Array.prototype.indexOf) {
+	Array.prototype.indexOf = function(searchElement, fromIndex) {
+		var k;
+		if (this == null) {
+			throw new TypeError('"this" is null or not defined');
+		}
+		var O = Object(this);
+		var len = O.length >>> 0;
+		if (len === 0) {
+			return -1
+		}
+		var n = +fromIndex || 0;
+		if (Math.abs(n) === Infinity) {
+			n = 0
+		}
+		if (n >= len) {
+			return -1
+		}
+		k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+		while (k < len) {
+			if (k in O && O[k] === searchElement) {
+				return k
+			}
+			k++
+		}
+		return -1
+	}
+}
+/* polyfill */
 var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E;
 
 //; 防止多个文件压缩合并的语法错误
@@ -91,7 +121,7 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E;
 		return destination;
 	};
 	//参考的$extends
-	O.extends = function(me, parent) {
+	O.warpp = function(me, parent) {
 		var ins = function() {
 			me.apply(this, arguments);
 		};
@@ -218,15 +248,18 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E;
 			},
 			//打乱数组返回新数组
 			shuffle: function(target) {
-				var temp = target,
-					j,
-					x,
-					i = target.length;
-				for (; i > 0; j = parseInt(Math.random() * i), x = target[--i], target[i] = target[j], target[j] = x) {
+				if (!target.length == 0) {
+					var temp = target,
+						j,
+						x,
+						i = target.length;
+					for (; i > 0; j = parseInt(Math.random() * i), x = target[--i], target[i] = target[j], target[j] = x) {
 
-				}
-				return temp;
-				//target.sort(function(){return 0.5 - Math.random()});
+					}
+					return temp;
+					//target.sort(function(){return 0.5 - Math.random()});	
+				};
+				return;
 			},
 			//是否包含指定元素
 			contains: function(target, item) {
@@ -557,10 +590,10 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E;
 		// 001000         8              节点 B 包含节点 A
 		// 010000         16             节点 A 包含节点 B
 		// 100000         32             浏览器的私有使用
-		compareDocument: document.defaultView ? function(a, b) {
+		contains: document.defaultView ? function(a, b) {
 			return !!(a.compareDocumentPosition(b) & 16);
 		} : function(a, b) {
-			return a != b && a.compareDocument(b);
+			return a != b && a.contains(b);
 		},
 		getRect: function(node) {
 			var left = 0,
@@ -881,7 +914,8 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E;
 				return returnValue;
 			};
 		}
-		//jQuery的fix
+		//可参看jQuery的fix
+		//http://dean.edwards.name/weblog/2005/10/add-event2/
 		function fixEvent(event) {
 			if (event) return event;
 			event = window.event;
