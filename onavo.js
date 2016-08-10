@@ -805,16 +805,19 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F;
 		}
 	};
 	/* ajax */
-	/* function */
+	/* Function s*/
+
 	F = (function() {
 		var slice = Array.prototype.slice;
 		return {
+			//绑定this
 			bind: function(fun, thisp) {
 				var args = slice.call(arguments, 2);
 				return function() {
 					return fun.apply(thisp, args.concat(slice.call(arguments)));
 				}
 			},
+			//绑定this
 			bindAsEventListener: function(fun, thisp) {
 				var args = slice.call(arguments, 2);
 				return function(event) {
@@ -823,7 +826,7 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F;
 			}
 		};
 	})();
-	/* function */
+	/* Function s*/
 	//代码结束
 
 	/*定义*/
