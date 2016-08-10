@@ -137,15 +137,15 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E, $$CE;
 			var newJs = document.createElement('script');
 			// ie
 			newJs.onreadystatechange = function() {
-					if (newJs.readyState === 'loaded' || newJs.readyState === 'complete') {
-						newJs.onreadystatechange = null;
-						callback && callback();
-					}
-				}
-				// 正常
+				if (newJs.readyState === 'loaded' || newJs.readyState === 'complete') {
+					newJs.onreadystatechange = null;
+					callback && callback();
+				};
+			};
+			// 正常
 			newJs.onload = function() {
 				callback && callback();
-			}
+			};
 			newJs.src = name;
 			// document.documentElement 特指 head
 			document.documentElement.firstChild.appendChild(newJs);
@@ -166,8 +166,7 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E, $$CE;
 					link.href = url;
 					callback && callback();
 					document.documentElement.firstChild.appendChild(link);
-
-				}
+				};
 			}
 			//cssload
 	};
@@ -805,15 +804,15 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E, $$CE;
 						http = new ActiveXObject("Microsoft.XMLHTTP");
 					} catch (E) {
 						http = false;
-					}
-				}
+					};
+				};
 			} else if (window.XMLHttpRequest) {
 				try {
 					http = new XMLHttpRequest();
 				} catch (e) {
 					http = false;
-				}
-			}
+				};
+			};
 			return http;
 		},
 		load: function(url, callback, format) {
@@ -839,14 +838,14 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E, $$CE;
 						if (format.charAt(0) == "j") {
 							result = result.replace(/[\n\r]/g, "");
 							result = eval('(' + result + ')');
-						}
+						};
 
 						if (callback) callback(result);
 					} else {
 						if (error) error(http.status);
-					}
-				}
-			}
+					};
+				};
+			};
 			http.send(null);
 		},
 		init: function() {
