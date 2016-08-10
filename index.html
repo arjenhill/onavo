@@ -69,7 +69,7 @@
     <!-- jsload, cssload -->
     <!-- 判断浏览器 -->
     <hr/>
-    <h2>3.判断浏览器: $$TB.B , $$TB.IE() , $$TB.weixin()</h2>
+    <h2>3.判断浏览器: $$TB.B , $$TB.IE() , $$TB.weixin(),$$TB.cookie.set(), $$TB.cookie.read(), $$TB.cookie.del()</h2>
     <script type="text/javascript">
     $$TB.B
     var flag = $$TB.IE();
@@ -78,6 +78,9 @@
     } else {
         //alert('22')
     }
+    $$TB.cookie.set('name','myname',1)
+    //$$TB.cookie.del('name')
+    //console.log($$TB.cookie.read('name'))
     </script>
     <!-- 判断浏览器 -->
     <!-- 数组方法 -->
@@ -185,6 +188,11 @@
         });
     </script>
     <!-- Event -->
+    <!-- CustomEvent -->
+    <hr/>
+    <h2>13.DOM CustomEvent: $$CE.addEvent() , $$CE.removeEvent(), $$CE.fireEvent(), $$CE.clearEvent()</h2>
+
+    <!-- CustomEvent -->
 </body>
 
 </html>

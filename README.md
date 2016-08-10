@@ -4,6 +4,20 @@
 
 ##change.log
 - --2016年8月10日  
+-- 新增**工具**浏览器 $$TB.cookie  
+```
+$$TB.cookie.set(name, value, expires) {String,String,Number}
+$$TB.cookie.read(name) {String}
+$$TB.cookie.del(name) {String}
+```
+-- 新增DOM**CustomEvent**用户自定义 $$CE方法  
+```
+$$CE.addEvent(object, type, handler)
+$$CE.removeEvent(object, type, handler)
+$$CE.clearEvent(object)
+$$CE.fireEvent(object, type)
+```
+
 -- 修复es5 Arrary.indexOf()应用错误（polyfill）[ie检测兼容]  
 -- 进入单元工具测试（jasmine），修复$$A.shuffle(arr)，形参为空的错误。  
 -- **修改**$$D.compareDocument() 为 $$D.contains() [ie检测兼容]  

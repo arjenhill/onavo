@@ -1019,9 +1019,20 @@ body .markdown-body
 <p>支持IE6以上，Firefox 3.5.3，Chrome 3.0，Safari 4.0.3，Opera 10.10以上的浏览器</p>
 <h2 id="changelog"><a name="user-content-changelog" href="#changelog" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>change.log</h2>
 <ul>
-<li>
-<p>&ndash;2016年8月10日<br />
-&ndash; 修复es5 Arrary.indexOf()应用错误（polyfill）[ie检测兼容]<br />
+<li>&ndash;2016年8月10日<br />
+&ndash; 新增<strong>工具</strong>浏览器 $$TB.cookie<br />
+<pre><code>$$TB.cookie.set(name, value, expires) {String,String,Number}
+$$TB.cookie.read(name) {String}
+$$TB.cookie.del(name) {String}
+</code></pre><br />
+&ndash; 新增DOM<strong>CustomEvent</strong>用户自定义 $$CE方法<br />
+<pre><code>$$CE.addEvent(object, type, handler)
+$$CE.removeEvent(object, type, handler)
+$$CE.clearEvent(object)
+$$CE.fireEvent(object, type)
+</code></pre></li>
+</ul>
+<p>&ndash; 修复es5 Arrary.indexOf()应用错误（polyfill）[ie检测兼容]<br />
 &ndash; 进入单元工具测试（jasmine），修复$$A.shuffle(arr)，形参为空的错误。<br />
 &ndash; <strong>修改</strong>$$D.compareDocument() 为 $$D.contains() [ie检测兼容]<br />
 &ndash; <strong>修改</strong>$$.extends命名为$$.warpp [ie检测兼容]<br />
@@ -1034,7 +1045,7 @@ $$E.fixEvent(event)
 <pre><code>$$F.bind(fun, thisp)
 $$F.bindAsEventListener(fun, thisp)
 </code></pre></p>
-</li>
+<ul>
 <li>
 <p>&ndash;2016年8月9日<br />
 &ndash; 新增<strong>Ajax</strong>扩展:$$jx<a href="http://115.29.139.162:10086/ceshi/jx/index.html">链接</a>，支持json，xml，txt等get,post.<a href="http://115.29.139.162:10086/onavo/index.html">链接</a>xhr请求。<br />

@@ -10,7 +10,7 @@
 
 //; 防止多个文件压缩合并的语法错误
 ;
-var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E;
+var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E, $$CE;
 //匿名的函数，为undefined是window的属性，声明为局部变量之后，在函数中如果再有变量与undefined做比较的话，程序就可以不用搜索undefined到window，可以提高程序的性能。
 (function(undefined) {
 	//代码开始
@@ -45,7 +45,7 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E;
 		}
 	}
 	/* polyfill */
-	var O, T, TB, A, S, D, jx, F, E;
+	var O, T, TB, A, S, D, jx, F, E, CE;
 
 	O = function(id) {
 		return "string" == typeof id ? document.getElementById(id) : id;
@@ -207,10 +207,40 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E;
 				return false;
 			};
 		};
+		var cookie = {
+			read: function(name) {
+				var cookieStr = "; " + document.cookie + "; ";
+				var index = cookieStr.indexOf("; " + name + "=");
+				if (index != -1) {
+					var s = cookieStr.substring(index + name.length + 3, cookieStr.length);
+					return unescape(s.substring(0, s.indexOf("; ")));
+				} else {
+					return null;
+				}
+			},
+			//设置
+			set: function(name, value, expires) {
+				var expDays = expires * 24 * 60 * 60 * 1000;
+				var expDate = new Date();
+				expDate.setTime(expDate.getTime() + expDays);
+				var expString = expires ? "; expires=" + expDate.toGMTString() : "";
+				var pathString = ";path=/";
+				document.cookie = name + "=" + escape(value) + expString + pathString;
+			},
+			//删除
+			del: function(name) {
+				var exp = new Date(new Date().getTime() - 1);
+				var s = this.read(name);
+				if (s != null) {
+					document.cookie = name + "=" + s + "; expires=" + exp.toGMTString() + ";path=/"
+				};
+			}
+		};
 		return {
 			B: B,
 			IE: IE,
-			weixin: weixin
+			weixin: weixin,
+			cookie: cookie
 		}
 	})(window.navigator.userAgent.toLowerCase());
 	if (TB.IE().version == 6) {
@@ -950,6 +980,44 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E;
 		};
 	})();
 	/* Event */
+
+	/* 自定义事件 CustomEvent */
+	CE = (function() {
+		var guid = 1;
+		return {
+			addEvent: function(object, type, handler) {
+				if (!handler.$$$guid) handler.$$$guid = guid++;
+				if (!object.cusevents) object.cusevents = {};
+				if (!object.cusevents[type]) object.cusevents[type] = {};
+				object.cusevents[type][handler.$$$guid] = handler;
+			},
+			removeEvent: function(object, type, handler) {
+				if (object.cusevents && object.cusevents[type]) {
+					delete object.cusevents[type][handler.$$$guid];
+				}
+			},
+			fireEvent: function(object, type) {
+				if (!object.cusevents) return;
+				var args = Array.prototype.slice.call(arguments, 2),
+					handlers = object.cusevents[type];
+				for (var i in handlers) {
+					handlers[i].apply(object, args);
+				}
+			},
+			clearEvent: function(object) {
+				if (!object.cusevents) return;
+				for (var type in object.cusevents) {
+					var handlers = object.cusevents[type];
+					for (var i in handlers) {
+						handlers[i] = null;
+					}
+					object.cusevents[type] = null;
+				}
+				object.cusevents = null;
+			}
+		};
+	})();
+	/* 自定义事件 */
 	//代码结束
 
 	/*定义*/
@@ -962,4 +1030,5 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E;
 	$$jx = jx;
 	$$F = F;
 	$$E = E;
+	$$CE = CE;
 })();
