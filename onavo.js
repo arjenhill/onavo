@@ -8,14 +8,14 @@
  * $$代表onavojs库/Object的对象
  */
 
-var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F;
+var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E;
 
 //; 防止多个文件压缩合并的语法错误
 ;
 //匿名的函数，为undefined是window的属性，声明为局部变量之后，在函数中如果再有变量与undefined做比较的话，程序就可以不用搜索undefined到window，可以提高程序的性能。
 (function(undefined) {
 	//代码开始
-	var O, T, TB, A, S, D, jx, F;
+	var O, T, TB, A, S, D, jx, F, E;
 
 	O = function(id) {
 		return "string" == typeof id ? document.getElementById(id) : id;
@@ -732,10 +732,8 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F;
 	/* dom e*/
 	/* ajax */
 	jx = {
-		//Create a xmlHttpRequest object - this is the constructor. 
 		getHTTPObject: function() {
 			var http = false;
-			//Use IE's ActiveX items to load the file.
 			if (typeof ActiveXObject != 'undefined') {
 				try {
 					http = new ActiveXObject("Msxml2.XMLHTTP");
@@ -746,7 +744,6 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F;
 						http = false;
 					}
 				}
-				//If ActiveX is not available, use the XMLHttpRequest of Firefox/Mozilla etc. to load the document.
 			} else if (window.XMLHttpRequest) {
 				try {
 					http = new XMLHttpRequest();
@@ -756,44 +753,33 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F;
 			}
 			return http;
 		},
-		// This function is called from the user's script. 
-		//Arguments - 
-		//	url	- The url of the serverside script that is to be called. Append all the arguments to 
-		//			this url - eg. 'get_data.php?id=5&car=benz'
-		//	callback - Function that must be called once the data is ready.
-		//	format - The return type for this function. Could be 'xml','json' or 'text'. If it is json, 
-		//			the string will be 'eval'ed before returning it. Default:'text'
 		load: function(url, callback, format) {
-			var http = this.init(); //The XMLHttpRequest object is recreated at every call - to defeat Cache problem in IE
+			var http = this.init();
 			if (!http || !url) return;
 			if (http.overrideMimeType) http.overrideMimeType('text/xml');
 
-			if (!format) var format = "text"; //Default return type is 'text'
+			if (!format) var format = "text";
 			format = format.toLowerCase();
 
-			//Kill the Cache problem in IE.
 			var now = "uid=" + new Date().getTime();
 			url += (url.indexOf("?") + 1) ? "&" : "?";
 			url += now;
 
 			http.open("GET", url, true);
 
-			http.onreadystatechange = function() { //Call a function when the state changes.
-				if (http.readyState == 4) { //Ready State will be 4 when the document is loaded.
+			http.onreadystatechange = function() {
+				if (http.readyState == 4) {
 					if (http.status == 200) {
 						var result = "";
 						if (http.responseText) result = http.responseText;
 
-						//If the return is in JSON format, eval the result before returning it.
 						if (format.charAt(0) == "j") {
-							//\n's in JSON string, when evaluated will create errors in IE
 							result = result.replace(/[\n\r]/g, "");
 							result = eval('(' + result + ')');
 						}
 
-						//Give the data to the callback function.
 						if (callback) callback(result);
-					} else { //An error occured
+					} else {
 						if (error) error(http.status);
 					}
 				}
@@ -806,7 +792,6 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F;
 	};
 	/* ajax */
 	/* Function s*/
-
 	F = (function() {
 		var slice = Array.prototype.slice;
 		return {
@@ -827,6 +812,110 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F;
 		};
 	})();
 	/* Function s*/
+	/* Event */
+	E = (function() {
+		/*from dean edwards*/
+		var addEvent, removeEvent, guid = 1,
+			storage = function(element, type, handler) {
+				if (!handler.$$guid) handler.$$guid = guid++;
+				if (!element.events) element.events = {};
+				var handlers = element.events[type];
+				if (!handlers) {
+					handlers = element.events[type] = {};
+					if (element["on" + type]) {
+						handlers[0] = element["on" + type];
+					}
+				}
+			};
+		if (window.addEventListener) {
+			var fix = {
+				"mouseenter": "mouseover",
+				"mouseleave": "mouseout"
+			};
+			addEvent = function(element, type, handler) {
+				if (type in fix) {
+					storage(element, type, handler);
+					var fixhandler = element.events[type][handler.$$guid] = function(event) {
+						var related = event.relatedTarget;
+						if (!related || (element != related && !(element.compareDocumentPosition(related) & 16))) {
+							handler.call(this, event);
+						}
+					};
+					element.addEventListener(fix[type], fixhandler, false);
+				} else {
+					element.addEventListener(type, handler, false);
+				};
+			};
+			removeEvent = function(element, type, handler) {
+				if (type in fix) {
+					if (element.events && element.events[type]) {
+						element.removeEventListener(fix[type], element.events[type][handler.$$guid], false);
+						delete element.events[type][handler.$$guid];
+					}
+				} else {
+					element.removeEventListener(type, handler, false);
+				};
+			};
+		} else {
+			addEvent = function(element, type, handler) {
+				storage(element, type, handler);
+				element.events[type][handler.$$guid] = handler;
+				element["on" + type] = handleEvent;
+			};
+			removeEvent = function(element, type, handler) {
+				if (element.events && element.events[type]) {
+					delete element.events[type][handler.$$guid];
+				}
+			};
+
+			function handleEvent() {
+				var returnValue = true,
+					event = fixEvent();
+				var handlers = this.events[event.type];
+				for (var i in handlers) {
+					this.$$handleEvent = handlers[i];
+					if (this.$$handleEvent(event) === false) {
+						returnValue = false;
+					}
+				}
+				return returnValue;
+			};
+		}
+		//jQuery的fix
+		function fixEvent(event) {
+			if (event) return event;
+			event = window.event;
+			event.pageX = event.clientX + D.getScrollLeft(event.srcElement);
+			event.pageY = event.clientY + D.getScrollTop(event.srcElement);
+			event.target = event.srcElement;
+			event.stopPropagation = stopPropagation;
+			event.preventDefault = preventDefault;
+			var relatedTarget = {
+				"mouseout": event.toElement,
+				"mouseover": event.fromElement
+			}[event.type];
+			if (relatedTarget) {
+				event.relatedTarget = relatedTarget;
+			}
+
+			return event;
+		};
+
+		function stopPropagation() {
+			this.cancelBubble = true;
+		};
+
+		function preventDefault() {
+			this.returnValue = false;
+		};
+
+		return {
+			"addEvent": addEvent,
+			"removeEvent": removeEvent,
+			"fixEvent": fixEvent
+		};
+	})();
+	/* Event */
 	//代码结束
 
 	/*定义*/
@@ -838,4 +927,5 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F;
 	$$D = D;
 	$$jx = jx;
 	$$F = F;
+	$$E = E;
 })();

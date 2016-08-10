@@ -4,11 +4,18 @@
 
 ##change.log
 - --2016年8月10日
+-- 新增**Event** $$E方法
+```
+$$E.addEvent(element, type, handler)
+$$E.removeEvent(element, type, handler)
+$$E.fixEvent(event)
+```
 -- 新增**Function** $$F方法
 ```
 $$F.bind(fun, thisp)
 $$F.bindAsEventListener(fun, thisp)
 ```
+
 
 - --2016年8月9日
 -- 新增**Ajax**扩展:$$jx[链接](http://115.29.139.162:10086/ceshi/jx/index.html)，支持json，xml，txt等get,post.[链接](http://115.29.139.162:10086/onavo/index.html)xhr请求。
