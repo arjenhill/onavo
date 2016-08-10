@@ -1,5 +1,5 @@
 /**
- * onavojs v0.14 
+ * onavojs v0.15 
  * @ 开发 p_jiewwang p_dainli p_miyagong
  * { JavaScript 工具库 }
  * github@ https://github.com/jiayi2/onavo
@@ -8,14 +8,14 @@
  * $$代表onavojs库/Object的对象
  */
 
-var $$, $$T, $$TB, $$A, $$S, $$D, $$jx;
+var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F;
 
 //; 防止多个文件压缩合并的语法错误
 ;
 //匿名的函数，为undefined是window的属性，声明为局部变量之后，在函数中如果再有变量与undefined做比较的话，程序就可以不用搜索undefined到window，可以提高程序的性能。
 (function(undefined) {
 	//代码开始
-	var O, T, TB, A, S, D, jx;
+	var O, T, TB, A, S, D, jx, F;
 
 	O = function(id) {
 		return "string" == typeof id ? document.getElementById(id) : id;
@@ -805,6 +805,25 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx;
 		}
 	};
 	/* ajax */
+	/* function */
+	F = (function() {
+		var slice = Array.prototype.slice;
+		return {
+			bind: function(fun, thisp) {
+				var args = slice.call(arguments, 2);
+				return function() {
+					return fun.apply(thisp, args.concat(slice.call(arguments)));
+				}
+			},
+			bindAsEventListener: function(fun, thisp) {
+				var args = slice.call(arguments, 2);
+				return function(event) {
+					return fun.apply(thisp, [E.fixEvent(event)].concat(args));
+				}
+			}
+		};
+	})();
+	/* function */
 	//代码结束
 
 	/*定义*/
@@ -815,4 +834,5 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx;
 	$$S = S;
 	$$D = D;
 	$$jx = jx;
+	$$F = F;
 })();

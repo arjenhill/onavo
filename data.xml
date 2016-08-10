@@ -1,0 +1,189 @@
+<programs>
+    <software>
+        <title>BD</title>
+        <version>2.00.A</version>
+        <description>BD is a `dir` replacement. What this program does is that it displays the contents of the specified folder in a colourful and more understandable way. BD displays files of different types in different colours, letting you see at a glance which files are executable, which are documents, directories etc.</description>
+        <page>http://www.geocities.com/binnyva/binny/pro/dos/bd/</page>
+        <language>C++</language>
+        <catagories>
+            <catagory>File Management</catagory>
+            <catagory>Console Tools</catagory>
+        </catagories>
+        <platform>DOS, Windows All</platform>
+        <dependencies>-</dependencies>
+        <publishedDate>June 8, 2004</publishedDate>
+        <lastUpdate>July 10, 2004</lastUpdate>
+    </software>
+    <software>
+        <title>Boot Booster</title>
+        <version>2.01.A</version>
+        <description>Boot Booster is a program that tries to put the booting time of the computer to good use. It can log the booting time, display a joke or an inspirational message that will change at every booting, display any message, display any reminders you have set etc. Boot Booster can be configured to log the booting time, shutdown time and the time the session lasted etc.</description>
+        <page>http://www.geocities.com/binnyva/binny/pro/dos/boot_booster/</page>
+        <language>C++</language>
+        <catagories>
+            <catagory>Console Tools</catagory>
+        </catagories>
+        <platform>DOS, Windows 95, Windows 98</platform>
+        <dependencies>-</dependencies>
+        <publishedDate>June 12, 2004</publishedDate>
+        <lastUpdate>June 12, 2004</lastUpdate>
+    </software>
+    <software>
+        <title>Batch ToolKit</title>
+        <version>1.00.A</version>
+        <description>Some utilities that will be very useful for people programming in batch. The utilities are Becho - a replacement for DOS's 'echo' command, Message - shows a message box with user specified text, Tnd - to displays the time and date in the specified format, getline - shows any line of a file and Select - shows a interactive arrow-keys driven menu from which the user can make a selection.</description>
+        <page>http://www.geocities.com/binnyva/binny/pro/dos/batch_tk/</page>
+        <language>C++</language>
+        <catagories>
+            <catagory>Console Tools</catagory>
+            <catagory>System Management</catagory>
+        </catagories>
+        <platform>DOS, Windows 95, Windows 98</platform>
+        <dependencies>-</dependencies>
+        <publishedDate>July 20, 2004</publishedDate>
+        <lastUpdate>July 20, 2004</lastUpdate>
+    </software>
+    <software>
+        <title>Indexer</title>
+        <version>1.00.D</version>
+        <description>Indexer is a program that make an index of all selected files in HTML format. This is extremely useful for Web Designers, Web Developers or those with a large collection of HTML Files. All you have to do is select all the files to be indexed and chose how the index should be made. Then select the file where the index should be written to and the program will do the rest. It will find the relative links to the specified files and write the index in specified format.</description>
+        <page>http://www.geocities.com/binnyva/binny/pro/tcl/indexer/</page>
+        <language>Tcl/Tk</language>
+        <catagories>
+            <catagory>Web Development</catagory>
+            <catagory>File Management</catagory>
+        </catagories>
+        <platform>Windows, Linux, MacOS</platform>
+        <dependencies>Tcl/Tk Interpreter, IWidgets Extention</dependencies>
+        <publishedDate>July 15, 2004</publishedDate>
+        <lastUpdate>July 15, 2004</lastUpdate>
+    </software>
+    <software>
+        <title>Ri</title>
+        <version>2.00.A</version>
+        <description>RI loads the file given at command line and using its extension to recognize the language, runs its interpreter and displays the output in the text window. Just load your script in this program and run it to see the results in its text window. You can also configure multiple interpreters for one language and run any interpreter from that list. Also included is an option to set a debugger for the language. One can also open the editor for your script from the program. </description>
+        <page>http://www.bin-co.com/tcl/scripts/ri/</page>
+        <language>Tcl/Tk</language>
+        <catagories>
+            <catagory>Development Tools</catagory>
+        </catagories>
+        <platform>Windows, Linux, MacOS</platform>
+        <dependencies>Tcl/Tk Interpreter</dependencies>
+        <publishedDate>January 19, 2005</publishedDate>
+        <lastUpdate>January 19, 2005</lastUpdate>
+    </software>
+    <software>
+        <title>TagView</title>
+        <version>2.01.A</version>
+        <description>Give a Tcl/Tk file as the command line argument and this script will find all the functions in it and display the function and the line number and also the description if one is provided in the script. Give a Tcl/Tk file as the command line argument and this script will find all the functions in it and display the function and the line number and also the description if one is provided in the script. If any function is double-clicked, it will be opened in an external editor with the selected procedure as the selected line. </description>
+        <page>http://www.bin-co.com/tcl/scripts/tagview/</page>
+        <language>Tcl/Tk</language>
+        <catagories>
+            <catagory>Development Tools</catagory>
+        </catagories>
+        <platform>Windows, Linux, MacOS</platform>
+        <dependencies>Tcl/Tk Interpreter</dependencies>
+        <publishedDate>October 6, 2004</publishedDate>
+        <lastUpdate>February 11, 2005</lastUpdate>
+    </software>
+    <software>
+        <title>GetFrequent</title>
+        <version>1.04.C</version>
+        <description>This tiny utility will download a given list of URLs from the net and store it in a given folder. This is very useful if there is a regular pages you visit all the time you access the net - like the Top 10 Movies list or the News page or something like that. Just add all those urls to this program and it will automatically download all those files and store it in a specified folder. </description>
+        <page>http://www.bin-co.com/tcl/scripts/getfrequent/</page>
+        <language>Tcl/Tk</language>
+        <catagories>
+            <catagory>Internet Tools</catagory>
+        </catagories>
+        <platform>Windows, Linux, MacOS</platform>
+        <dependencies>Tcl/Tk Interpreter with HTTP extension</dependencies>
+        <publishedDate>30 December, 2004</publishedDate>
+        <lastUpdate>30 December, 2004</lastUpdate>
+    </software>
+    <software>
+        <title>SimplePlanner</title>
+        <version>2.00.A</version>
+        <description>A planner that will write the plans and the date they were made in to specified Text file. Can read the plans, add new ones, finish existing ones etc. Useful if you have a lot of plans and want a simple system to document them all...</description>
+        <page>http://www.bin-co.com/tcl/scripts/simple_planner/</page>
+        <language>Tcl/Tk</language>
+        <catagories>
+            <catagory>Others</catagory>
+        </catagories>
+        <platform>Windows, Linux, MacOS</platform>
+        <dependencies>Tcl/Tk Interpreter</dependencies>
+        <publishedDate>November 4, 2004</publishedDate>
+        <lastUpdate>November 4, 2004</lastUpdate>
+    </software>
+    <software>
+        <title>USENET Archive Reader</title>
+        <version>3.00.A</version>
+        <description>UseNet Archive Reader is a small script that will traverse through archived Comp.Lang.Tcl files available from http://www.oche.de/~akupries/tcltk.html#clt-arch and display the results in a user understandable way. Very useful when trying to learn Tcl/Tk by looking at old Comp.Lang.Tcl posts.</description>
+        <page>http://www.bin-co.com/tcl/scripts/usenet/</page>
+        <language>Tcl/Tk</language>
+        <catagories>
+            <catagory>Internet</catagory>
+        </catagories>
+        <platform>Windows, Linux, MacOS</platform>
+        <dependencies>Tcl/Tk Interpreter, c.t.l Archives</dependencies>
+        <publishedDate>November 15, 2004</publishedDate>
+        <lastUpdate>November 15, 2004</lastUpdate>
+    </software>
+    <software>
+        <title>FileOpera</title>
+        <version>1.00.A</version>
+        <description>A front end for multiple Tcl scripts for operation on any text file. This is intended for use by people who know how to program in Tcl/Tk. All the scripts in the 'Operation' folder can be activated from this script.</description>
+        <page>http://www.bin-co.com/tcl/#fileopera</page>
+        <language>Tcl/Tk</language>
+        <catagories>
+            <catagory>File Editor</catagory>
+            <catagory>Development Tools</catagory>
+        </catagories>
+        <platform>Windows, Linux, MacOS</platform>
+        <dependencies>Tcl/Tk Interpreter</dependencies>
+        <publishedDate>September 17, 2004</publishedDate>
+        <lastUpdate>September 17, 2004</lastUpdate>
+    </software>
+    <software>
+        <title>RSSPilot</title>
+        <version>1.00.A Beta</version>
+        <description>RSSPilot is a software that can be used to create RSS feeds for your web. One can also use it to read offline RSS feeds.</description>
+        <page>http://www.bin-co.com/perl/tk/rsspilot/</page>
+        <language>Perl</language>
+        <catagories>
+            <catagory>Internet</catagory>
+            <catagory>Web Development</catagory>
+        </catagories>
+        <platform>Windows, Linux</platform>
+        <dependencies>Perl Interpreter, Tk Module, XML Module</dependencies>
+        <publishedDate>February 11, 2005</publishedDate>
+        <lastUpdate>February 11, 2005</lastUpdate>
+    </software>
+    <software>
+        <title>Nots And Crosses</title>
+        <version>-</version>
+        <description>A program with which you can play Nots and Crosses(or known as Tic Tac Toe). Kid Stuff.</description>
+        <page>http://www.geocities.com/binnyva/binny/pro/dos/nots/index.htm</page>
+        <language>C++</language>
+        <catagories>
+            <catagory>Games</catagory>
+        </catagories>
+        <platform>DOS, Windows All</platform>
+        <dependencies>-</dependencies>
+        <publishedDate>January 1, 2000</publishedDate>
+        <lastUpdate>January 1, 2000</lastUpdate>
+    </software>
+    <software>
+        <title>Bible Aid</title>
+        <version>2.1</version>
+        <description>Bible Aid is a software for those who try to read the Bible completely within a limited period of time. You can record your progress in a very user friendly interface and see how much more chapters you have to read, how many days, how many chapters you have to read per day to reach the target, etc.</description>
+        <page>http://www.geocities.com/binnyva/binny/pro/dos/bible/index.htm</page>
+        <language>C++</language>
+        <catagories>
+            <catagory>Others</catagory>
+        </catagories>
+        <platform>DOS, Windows All</platform>
+        <dependencies>-</dependencies>
+        <publishedDate>September 24, 2002</publishedDate>
+        <lastUpdate>September 24, 2002</lastUpdate>
+    </software>
+</programs>

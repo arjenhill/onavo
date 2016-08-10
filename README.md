@@ -3,24 +3,17 @@
 支持IE6以上，Firefox 3.5.3，Chrome 3.0，Safari 4.0.3，Opera 10.10以上的浏览器
 
 ##change.log
+- --2016年8月10日
+
 - --2016年8月9日
--- 新增**Ajax** $$jx扩展，支持json，xml，txt等get,post.[链接](http://115.29.139.162:10086/onavo/index.html)
+-- 新增**Ajax**扩展:$$jx[链接](http://115.29.139.162:10086/ceshi/jx/index.html)，支持json，xml，txt等get,post.[链接](http://115.29.139.162:10086/onavo/index.html)xhr请求。
 --jx 可扩展 xml2array.js[链接](http://115.29.139.162:10086/ceshi/xmlArray/html.html)
 ```
-//http://115.29.139.162:10086/ceshi/jx/index.html
+$$jx.load('file',function(res){},'filetype','type');
+//example:
 $$jx.load('json.json', function(data) {
     console.log(data)
 }, 'json', 'get');
-//
-$$jx.load('xx.txt', function(data) {
-    console.log(data)
-}, 'text', 'post');
-
-$$jx.load('data.xml', function(xmlDoc) {
-    arr = xml2array(xmlDoc);
-    $("result").value = dump(arr);
-    $("loading-indicator").toggle();
-}, "XML");
 ```
 -- 新增**原型方法**
 ```

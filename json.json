@@ -1,0 +1,10 @@
+{
+	"title": "JSON testing",
+	"_REQUEST": {
+		'fetch': 'true',
+		'dummy': 'text',
+		'lora': 'ipsum',
+		'format': 'json',
+		'uid': '1470383043182'
+	}
+}

@@ -145,11 +145,15 @@
 
     <!-- ajax -->
     <hr/>
-    <h2>9.Ajax $$jx</h2>
+    <h2>9.Ajax扩展： $$jx 【$$jx.load('file',function(res){},'filetype','type');】</h2>
+
     <script type="text/javascript">
-        $$jx.load('http://115.29.139.162:10086/ceshi/jx/json.json', function(data) {
-            console.log(data)
+        $$jx.load('json.json', function(data) {
+            //console.log(data)
         }, 'json', 'get');
+        $$jx.load('data.xml', function(xmlDoc) {
+            //console.log(xmlDoc)
+        }, "XML");
     </script>
     <!-- ajax -->
 </body>
