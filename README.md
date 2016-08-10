@@ -4,6 +4,7 @@
 
 ##change.log
 - --2016年8月10日  
+
 -- 新增**Event** $$E方法
 ```
 $$E.addEvent(element, type, handler)
@@ -18,6 +19,7 @@ $$F.bindAsEventListener(fun, thisp)
 
 
 - --2016年8月9日  
+
 -- 新增**Ajax**扩展:$$jx[链接](http://115.29.139.162:10086/ceshi/jx/index.html)，支持json，xml，txt等get,post.[链接](http://115.29.139.162:10086/onavo/index.html)xhr请求。
 --jx 可扩展 xml2array.js[链接](http://115.29.139.162:10086/ceshi/xmlArray/html.html)
 ```
@@ -82,6 +84,7 @@ $$S.underscored(target) {String} 把驼峰转换成_
 
 
 - --2016年8月8日  
+
 -- 新增**工具**浏览器检 $$TB.B , $$TB.IE()全版本测方法
 ```
 $$TB.B,
@@ -107,6 +110,7 @@ $$A.min()
 ```
 
 - --2016年8月7日  
+
 -- 初始项目
 -- 新增$$T.jsload，$$T.cssload方法
 ```
