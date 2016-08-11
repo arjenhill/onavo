@@ -1,5 +1,5 @@
 /**
- * onavojs v0.16 
+ * onavojs v0.17 
  * @ 开发 p_jiewwang p_dainli p_miyagong
  * { JavaScript 工具库 }
  * github@ https://github.com/jiayi2/onavo
