@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <title>onavojs库</title>
     <!-- <script type="text/javascript" src="onavo.min.js"></script> -->
-    <script type="text/javascript" src="onavo.hex.js"></script>
+    <script type="text/javascript" src="onavo.js"></script>
     <style type="text/css">
         #id{width:100px;height:100px;background:#ff00ff;display:inline-block;}
+        #id3{width:200px;height:30px;background:#ff00ff;}
         #textarea-log{display:inline-block;}
     </style>
 </head>
@@ -20,7 +21,8 @@
 </div>
 <br/>
 <textarea id="textarea-log" cols="60" rows="5"></textarea>
-<div id="id3"></div>
+<div id="id3">id3</div><input type="button" id="button" value="清除自定义alert事件" />
+
 </h2>
     <script type="text/javascript">
     $$('id')
@@ -192,7 +194,30 @@
     <!-- CustomEvent -->
     <hr/>
     <h2>13.DOM CustomEvent: $$CE.addEvent() , $$CE.removeEvent(), $$CE.fireEvent(), $$CE.clearEvent()</h2>
+    <script type="text/javascript">
+       var fnClick = function() {
+            alert('自定义click！')    
+        },
+        funAlert1 = function() {
+            alert("自定义alert事件弹出！");
+        },
+        funAlert2 = function() {
+            alert("自定义alert事件再次弹出！");
+        };
 
+        $$CE.addEvent(id3,'click', fnClick);
+        $$CE.addEvent(id3,'alert', funAlert1);
+        $$CE.addEvent(id3,'alert', funAlert2);
+        var button = $$("button");
+
+        $$CE.addEvent(button,"click", function() {
+            $$CE.removeEvent(id3,"alert", funAlert1)
+            $$CE.removeEvent(id3,"alert", funAlert2);
+            alert("清除成功！");
+        });
+       //$$CE.fireEvent(id3, 'alert')
+       //$$CE.fireEvent(button, 'click')
+    </script>
     <!-- CustomEvent -->
 </body>
 
