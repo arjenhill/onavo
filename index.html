@@ -7,9 +7,23 @@
     <!-- <script type="text/javascript" src="onavo.min.js"></script> -->
     <script type="text/javascript" src="onavo.js"></script>
     <style type="text/css">
-        #id{width:100px;height:100px;background:#ff00ff;display:inline-block;}
-        #id3{width:200px;height:30px;background:#ff00ff;}
-        #textarea-log{display:inline-block;}
+    #id {
+        width: 100px;
+        height: 100px;
+        background: #ff00ff;
+        display: inline-block;
+    }
+    
+    #id3,
+    #id5 {
+        width: 200px;
+        height: 30px;
+        background: #ff00ff;
+    }
+    
+    #textarea-log {
+        display: inline-block;
+    }
     </style>
 </head>
 
@@ -22,7 +36,7 @@
 <br/>
 <textarea id="textarea-log" cols="60" rows="5"></textarea>
 <div id="id3">id3</div><input type="button" id="button" value="清除自定义alert事件" />
-
+<div id="id5">id5</div>
 </h2>
     <script type="text/javascript">
     $$('id')
@@ -81,9 +95,9 @@
     } else {
         //alert('22')
     }
-    $$TB.cookie.set('name','myname',1)
-    //$$TB.cookie.del('name')
-    //console.log($$TB.cookie.read('name'))
+    $$TB.cookie.set('name', 'myname', 1)
+        //$$TB.cookie.del('name')
+        //console.log($$TB.cookie.read('name'))
     </script>
     <!-- 判断浏览器 -->
     <!-- 数组方法 -->
@@ -100,103 +114,153 @@
     <h2>5.字符串方法： $$S $$S.camelize() , $$S.byteLen() , $$S.capitalize() , $$S.contains(), $$S.containsClass() , $$S.dasherize() , $$S.endsWith(), $$S.startsWith(), $$S.fillZero, $$S.print() , $$S.repeat(), $$S.stripTags(), $$S.trim(), $$S.truncate()</h2>
     <script type="text/javascript">
     var string_xx = "margin-top-padding-niu--hin-top-padding-niu--hi";
-    var string_2xx ="HI";
+    var string_2xx = "HI";
     var ddx = {
-        name : 21323,
-        adssa :32213
-    }
-    //获得字符串字节长度
+            name: 21323,
+            adssa: 32213
+        }
+        //获得字符串字节长度
     $$S.byteLen(string_xx, "utf-8")
-    //驼峰转化
+        //驼峰转化
     $$S.camelize(string_xx)
-    //首字母大写
+        //首字母大写
     $$S.capitalize(string_xx)
-    //一个字符串是否包含另一个字符串
+        //一个字符串是否包含另一个字符串
     $$S.contains(string_xx, string_2xx)
 
     //参2是参1的结尾么
-    $$S.endsWith(string_xx, string_2xx,true);
+    $$S.endsWith(string_xx, string_2xx, true);
 
-    $$S.fillZero(string_2xx,100);
+    $$S.fillZero(string_2xx, 100);
 
     $$S.print(string_2xx)
-    $$S.repeat(string_xx,22)
-    $$S.repeat(string_xx,22)
+    $$S.repeat(string_xx, 22)
+    $$S.repeat(string_xx, 22)
     $$S.truncate(string_xx)
     </script>
     <!-- 字符串方法 -->
-
     <!-- dom方法 -->
     <hr/>
     <h2 id="id4">6.dom方法 : $$D.setStyle(), $$D.curStyle() , $$D.getClientRect(), $$D.getRect(),$$D.contains(),  $$D.getScrollLeft(), $$D.getScrollTop() ，$$D.nextB() ，$$D.nextB() , $$D.nextBs(), $$D.prevBs(), $$D.getType() </h2>
     <script type="text/javascript">
-     var id = $$('id');
-     var id2 = $$('id2');
-     var id3 = $$('id3');
-     var id4 = $$('id4');
-     $$D.getScrollTop(id);
-     $$D.contains(id,id2)
-     $$D.contains(id2,id3)   
-     $$D.getRect(id)  
-     $$D.curStyle(id).backgroundColor
-     $$D.curStyle(id2).height
-     //$$D.setStyle(id,'height','10px')
-     //$$D.getSize(id).width
+    var id = $$('id');
+    var id2 = $$('id2');
+    var id3 = $$('id3');
+    var id4 = $$('id4');
+    $$D.getScrollTop(id);
+    $$D.contains(id, id2)
+    $$D.contains(id2, id3)
+    $$D.getRect(id)
+    $$D.curStyle(id).backgroundColor
+    $$D.curStyle(id2).height
+        //$$D.setStyle(id,'height','10px')
+        //$$D.setStyle(id, {
+        //   position: "absolute",
+        //   visibility: "hidden", 
+        //   display: "block",
+        //   zIndex: 99,
+        //   margin: 0});
+        //$$D.setStyle(id,{})
+        //$$D.getSize(id).width
+        //
     </script>
     <!-- dom方法 -->
     <!-- 原型方法 -->
     <hr/>
     <h2>7.原型方法 $$.extend() , $$.deepextend(), $$.warpp()</h2>
     <!-- 原型方法 -->
-
     <hr/>
     <h2>8.对象检测 $$.type.getType() ，$$.type.isArray(), $$.type.isBoolen() ,$$.type.isFunction() , $$.type.isNull() , $$.type.isObject() , $$.type.isString() , $$.type.isUndefined()</h2>
-
     <!-- ajax -->
     <hr/>
     <h2>9.Ajax扩展： $$jx 【$$jx.load('file',function(res){},'filetype','type');】</h2>
-
     <script type="text/javascript">
-        $$jx.load('json.json', function(data) {
-            //console.log(data)
-        }, 'json', 'get');
-        $$jx.load('data.xml', function(xmlDoc) {
-            //console.log(xmlDoc)
-        }, "XML");
+    $$jx.load('json.json', function(data) {
+        //console.log(data)
+    }, 'json', 'get');
+    $$jx.load('data.xml', function(xmlDoc) {
+        //console.log(xmlDoc)
+    }, "XML");
     </script>
     <!-- ajax -->
-
     <!-- Function -->
     <hr/>
     <h2>10.Function方法 ：$$F.bind() ，$$F.bindAsEventListener()</h2>
+    <script type="text/javascript">
+    var id5 = $$("id5");
+    //$$E.addEvent(id5,'click',id5fun)
+    //function id5fun(e){
+    //    function _newobj(){
+    //        console.log('xx')
+    //    };
+    //    this._name = 'jjj';
+    //    this._name2 = {
+    //        dd : function(){
+    //            console.log('dd');
+    //        }
+    //    }
+    //    $$F.bind( fnClick(), this);
+    //    console.log(e.srcElement._name)
+    //    console.log(e.srcElement.outerText)
+    //    console.log(e.target)
+    //};
+    var in2  = function(){
+        console.log('in22')
+    };
+    var textarea = $$("textarea-log");
+    $$E.addEvent(textarea, 'click', function(){
+        console.log('textarea')
+    });
+    function T(c) {
+        this.id = "双击";
+        this.out = "移开";
+        this.dom = $$("id5");
+        this.dom2 = $$("textarea-log")
+    }
+    T.prototype = {
+        init: function() {
+            this.dom.onclick = function() {
+                console.log(this.id);
+            }
+            this.dom.ondblclick = function() {
+                console.log(this.id);
+                $$F.bindAsEventListener(dom2 ,this)
+            }.bind(this);
+            this.dom.onmouseout = function() {
+                $$F.bind(in2() ,this)
+                console.log(this);
+            }.bind(this)
+        }
+    };
+    new T().init()
+    </script>
     <!-- Function -->
-
     <!-- Event -->
     <hr/>
     <h2>12.Event方法 ：$$E.addEvent()，$$E.removeEvent() , $$E.fixEvent()</h2>
     <script type="text/javascript">
     //http://www.w3school.com.cn/jsref/dom_obj_event.asp
-        var logEl = $$('textarea-log');
-        //fix ie
-        function logEvent(type) {
-            logEl.innerHTML = logEl.innerHTML + '\n' + new Date().toLocaleTimeString() + ' - ' + type;
-            logEl.scrollTop = logEl.scrollHeight;
-        }        
-        $$E.addEvent(id,'touchstart',function(event){
-            logEvent(event)
-        });
-        $$E.addEvent(id,'click',function(event){
-            $$E.fixEvent(event)
-            logEvent("click")
-        });
+    var logEl = $$('textarea-log');
+    //fix ie
+    function logEvent(type) {
+        logEl.innerHTML = logEl.innerHTML + '\n' + new Date().toLocaleTimeString() + ' - ' + type;
+        logEl.scrollTop = logEl.scrollHeight;
+    }
+    $$E.addEvent(id, 'touchstart', function(event) {
+        logEvent(event)
+    });
+    $$E.addEvent(id, 'click', function(event) {
+        $$E.fixEvent(event)
+        logEvent("click")
+    });
     </script>
     <!-- Event -->
     <!-- CustomEvent -->
     <hr/>
     <h2>13.DOM CustomEvent: $$CE.addEvent() , $$CE.removeEvent(), $$CE.fireEvent(), $$CE.clearEvent()</h2>
     <script type="text/javascript">
-       var fnClick = function() {
-            alert('自定义click！')    
+    var fnClick = function() {
+            alert('自定义click！')
         },
         funAlert1 = function() {
             alert("自定义alert事件弹出！");
@@ -205,18 +269,20 @@
             alert("自定义alert事件再次弹出！");
         };
 
-        $$CE.addEvent(id3,'click', fnClick);
-        $$CE.addEvent(id3,'alert', funAlert1);
-        $$CE.addEvent(id3,'alert', funAlert2);
-        var button = $$("button");
+    $$CE.addEvent(id3, 'click', fnClick);
+    $$CE.addEvent(id3, 'ww', fnClick);
+    $$CE.addEvent(id3, 'alert', funAlert1);
+    $$CE.addEvent(id3, 'alert', funAlert2);
+    var button = $$("button");
 
-        $$CE.addEvent(button,"click", function() {
-            $$CE.removeEvent(id3,"alert", funAlert1)
-            $$CE.removeEvent(id3,"alert", funAlert2);
-            alert("清除成功！");
-        });
-       //$$CE.fireEvent(id3, 'alert')
-       //$$CE.fireEvent(button, 'click')
+    $$CE.addEvent(button, "click", function() {
+        $$CE.removeEvent(id3, "alert", funAlert1)
+        $$CE.removeEvent(id3, "alert", funAlert2);
+        alert("清除成功！");
+    });
+    //$$CE.fireEvent(id3, 'alert')
+    //$$CE.fireEvent(id3, 'ww')
+    //$$CE.fireEvent(button, 'click')
     </script>
     <!-- CustomEvent -->
 </body>

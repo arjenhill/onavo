@@ -1,5 +1,5 @@
 /**
- * onavojs v0.16 
+ * onavojs v0.17 
  * @ 开发 p_jiewwang p_dainli p_miyagong
  * { JavaScript 工具库 }
  * github@ https://github.com/jiayi2/onavo
@@ -857,14 +857,14 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E, $$CE;
 	F = (function() {
 		var slice = Array.prototype.slice;
 		return {
-			//绑定this
+			//绑定this,返回function的实例，这个实例和源function的结构一样，但是它已被绑定给了参数中提供的object，就是说，function中的this指针指向参数object。
 			bind: function(fun, thisp) {
 				var args = slice.call(arguments, 2);
 				return function() {
 					return fun.apply(thisp, args.concat(slice.call(arguments)));
 				}
 			},
-			//绑定this
+			//绑定this,用法和上面的bind一样，区别在于用来绑定事件。
 			bindAsEventListener: function(fun, thisp) {
 				var args = slice.call(arguments, 2);
 				return function(event) {
