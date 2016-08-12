@@ -1,7 +1,8 @@
 ## onavo.js
 ###JavaScript 工具库
 支持IE6以上，Firefox 3.5.3，Chrome 3.0，Safari 4.0.3，Opera 10.10以上的浏览器
-- --单元测试 jasmine [https://github.com/3JTeam/onavojs/tree/test](https://github.com/3JTeam/onavojs/tree/test)   
+单元测试 jasmine>> [链接](https://github.com/3JTeam/onavojs/tree/test)   
+
 ##change.log
 - --2016年8月10日  
 -- 新增**工具**浏览器 $$TB.cookie  
