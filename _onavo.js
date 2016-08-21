@@ -1040,7 +1040,7 @@
 			jx: jx,
 			F: F,
 			E: E,
-			CE: CE,
+			CE: CE
 		};
 		return api;
 	}
