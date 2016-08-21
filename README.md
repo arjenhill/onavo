@@ -1,9 +1,19 @@
 ## onavo.js
 ###JavaScript 工具库
-支持IE6以上，Firefox 3.5.3，Chrome 3.0，Safari 4.0.3，Opera 10.10以上的浏览器
-单元测试 jasmine>> [链接](https://github.com/3JTeam/onavojs/tree/test)   
+支持IE6以上，Firefox 3.5.3，Chrome 3.0，Safari 4.0.3，Opera 10.10以上的浏览器  
+git>>: [链接](https://github.com/jiayi2/onavo)  
+单元测试 jasmine>>: [链接](https://github.com/3JTeam/onavojs/tree/test)   
 
 ##change.log
+- --2016年8月21日  
+-- 新增**模块化**(_onavo.js)方法，可以require和import使用了。  
+注意，例如[demo](http://115.29.139.162:10086/onavo/index2.html)  
+
+```
+$$.T.cssload('http://mat1.gtimg.com/www/base/base.css', function() {
+       console.log('base.css ok')
+    });
+```
 - --2016年8月10日  
 -- 新增**工具**浏览器 $$TB.cookie  
 ```
