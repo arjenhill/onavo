@@ -5,6 +5,24 @@ git>>: [链接](https://github.com/jiayi2/onavo)
 单元测试 jasmine>>: [链接](https://github.com/3JTeam/onavojs/tree/test)   
 
 ##change.log
+- --2016年8月26日
+-- 移除**工具** $$TB.cookie对象，新增$$TB.cookie()方法，使用方法如下：  
+```
+$$TB.cookie().set('name', 'value');
+$$TB.cookie().set('name', 'value', { expires: 7 });
+$$TB.cookie().set('name', 'value', { expires: 7, path: '' });
+$$TB.cookie().get()
+$$TB.cookie().get('name')
+$$TB.cookie().remove('name');
+$$TB.cookie().remove('name', { path: '' });
+```
+-- --$$TB.cookie JSON模式  
+```
+$$TB.cookie().set('name', { foo: 'bar' });
+$$TB.cookie().get('name'); => '{"foo":"bar"}'
+$$TB.cookie().getJSON('name'); => { foo: 'bar' }
+$$TB.cookie().getJSON(); => { name: { foo: 'bar' } }
+```
 - --2016年8月21日  
 -- 新增**模块化**(_onavo.js)方法，可以require和import使用了。  
 注意，例如[demo](http://115.29.139.162:10086/onavo/index2.html)  

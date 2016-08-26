@@ -9,11 +9,15 @@
 
 <body>
     <script type="text/javascript">
-    require(['_onavo'], function($$) {
+    require(['onavo.umd'], function($$) {
+        var $$1 = $$;
     	window.console && console.log($$)
-        $$.T.cssload('http://mat1.gtimg.com/www/base/base.css', function() {
+        $$1.T.cssload('http://mat1.gtimg.com/www/base/base.css', function() {
             console.log('base.css ok')
         });
+        console.log($$.TB)
+        console.log($$.TB.IE().version == 6)
+        console.log($$.TB.cookie().get())
     });
     </script>
 </body>

@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>onavojs库</title>
+    <!-- <script type="text/javascript" src="onavo.js"></script> -->
     <!-- <script type="text/javascript" src="onavo.min.js"></script> -->
-    <script type="text/javascript" src="onavo.js"></script>
+    <script type="text/javascript" src="onavo.hex.js"></script>
     <style type="text/css">
     #id {
         width: 100px;
@@ -86,7 +87,7 @@
     <!-- jsload, cssload -->
     <!-- 判断浏览器 -->
     <hr/>
-    <h2>3.判断浏览器: $$TB.B , $$TB.IE() , $$TB.weixin(),$$TB.cookie.set(), $$TB.cookie.read(), $$TB.cookie.del()</h2>
+    <h2>3.判断浏览器: $$TB.B , $$TB.IE() , $$TB.weixin(),$$TB.cookie().set(), $$TB.cookie.get(), $$TB.cookie().remove()</h2>
     <script type="text/javascript">
     $$TB.B
     var flag = $$TB.IE();
@@ -95,7 +96,7 @@
     } else {
         //alert('22')
     }
-    $$TB.cookie.set('name', 'myname', 1)
+    $$TB.cookie().set('name', 'myname', 1)
         //$$TB.cookie.del('name')
         //console.log($$TB.cookie.read('name'))
     </script>
