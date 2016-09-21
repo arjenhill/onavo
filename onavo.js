@@ -346,12 +346,21 @@ var $$, $$T, $$TB, $$A, $$S, $$D, $$jx, $$F, $$E, $$CE;
 			}
 			return formatString;
 		};
+		var stopPropagation = function(e) {
+			var e = e || window.event;
+			if (e.stopPropagation) {
+				e.stopPropagation(); //W3C
+			} else {
+				e.cancelBubble = true; //IE
+			};
+		};
 		return {
 			B: B,
 			IE: IE,
 			weixin: weixin,
 			cookie: cookie,
-			timeformat: timeformat
+			timeformat: timeformat,
+			stopPropagation: stopPropagation
 		}
 	})(window.navigator.userAgent.toLowerCase());
 	if (TB.IE().version == 6) {
