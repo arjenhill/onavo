@@ -5,7 +5,14 @@ git>>: [链接](https://github.com/jiayi2/onavo)
 单元测试 jasmine>>: [链接](https://github.com/3JTeam/onavojs/tree/test)   
 
 ##change.log
-- --2016年8月26日
+
+- --2016年9月21日  
+-- 新增$$TB.timeformat用于格式化日期
+```
+$$TB.timeformat(new Date().getTime(), 'YYYY/MM/DD hh:mm:ss')
+```
+
+- --2016年8月26日  
 -- 移除**工具** $$TB.cookie对象，新增$$TB.cookie()方法，使用方法如下：  
 ```
 $$TB.cookie().set('name', 'value');

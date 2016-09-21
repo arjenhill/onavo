@@ -1021,7 +1021,14 @@ git&gt;&gt;: <a href="https://github.com/jiayi2/onavo">链接</a><br />
 单元测试 jasmine&gt;&gt;: <a href="https://github.com/3JTeam/onavojs/tree/test">链接</a>   </p>
 <h2 id="changelog"><a name="user-content-changelog" href="#changelog" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>change.log</h2>
 <ul>
-<li>&ndash;2016年8月26日<br />
+<li>
+<p>&ndash;2016年9月21日<br />
+&ndash; 新增$$TB.timeformat用于格式化日期<br />
+<pre><code>$$TB.timeformat(new Date().getTime(), 'YYYY/MM/DD hh:mm:ss')
+</code></pre></p>
+</li>
+<li>
+<p>&ndash;2016年8月26日<br />
 &ndash; 移除<strong>工具</strong> $$TB.cookie对象，新增$$TB.cookie()方法，使用方法如下：<br />
 <pre><code>$$TB.cookie().set('name', 'value');
 $$TB.cookie().set('name', 'value', { expires: 7 });
@@ -1036,7 +1043,8 @@ $$TB.cookie().remove('name', { path: '' });
 $$TB.cookie().get('name'); =&gt; '{&quot;foo&quot;:&quot;bar&quot;}'
 $$TB.cookie().getJSON('name'); =&gt; { foo: 'bar' }
 $$TB.cookie().getJSON(); =&gt; { name: { foo: 'bar' } }
-</code></pre></li>
+</code></pre></p>
+</li>
 <li>&ndash;2016年8月21日<br />
 &ndash; 新增<strong>模块化</strong>(_onavo.js)方法，可以require和import使用了。<br />
 注意，例如<a href="http://115.29.139.162:10086/onavo/index2.html">demo</a>  </li>
