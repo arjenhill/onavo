@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script type="text/javascript" src="../src/onavo.js"></script>
+
+    <div class="halld"></div>
+    <div id="b"></div>
+    <div id="div1">hello</div>
+    <!-- checkbox -->
+    <div id="div2"></div>
+
+
+
+<div id="div4"></div>
+
+<div id="div5" class="qunit onavo-ui-nodes-tip-arrowleft">
+    <input type="text" class="sel"/>
+    <textarea class="sel"></textarea>
+    <div class="onavo-ui-nodes-tip-arrow">
+        <div class="onavo-ui-nodes-tip-arrow-before"></div>
+        <div class="onavo-ui-nodes-tip-arrow-after"></div>
+    </div>
+</div>
+    <script type="text/javascript">
+    onavo.set({
+        // Source settings
+        srcRoot: 'http://localhost/tags/onavo/0.1.1/',
+        srcPath: 'src/',
+        useCombo: false
+    });
+    //lang.trim
+    onavo.require('lang.trim', function(require) {
+        var Trim = require('lang.trim');
+        var dd = "   xxxmom "
+        console.log(Trim(dd))
+    });
+    //lang.date
+    onavo.require('lang.date', function(require) {
+        var date = require('lang.date');
+        console.log(date.format('Y-m-d H:i:s'));
+    })
+    //lang.browser
+    onavo.require('lang.browser', function(require) {
+        var browser = require('lang.browser');
+        console.log(browser);
+    })
+    //util.style
+    onavo.require('util.style', function(require) {
+        var _style = require('util.style');
+        console.log(_style)
+        $(".halld").addClass('xxx');
+        _style.add('app1',' #b{width:1200px;padding:0 12px;background:#FF0000;position:relative;height: 30px;}.l{width:844px;float:left;border-right:1px solid #DDD;padding-right:10px;position:relative}.m{width:670px;float:left;border-right:1px solid #DDD;padding-right:10px;position:relative}.r{width:336px;float:right;padding-bottom:200px}.topbg{height:30px;background:url(http://img.lanrentuku.com/img/images/a.png) repeat -20px 0} ');
+        _style.load('app2','http://tech.qq.com/css/cssreset-min.css',function(){
+        	alert('ok')
+        });
+        //_style.remove('app1')
+        _style.remove('app2')
+    });
+    //ui-nodes-button
+    // onavo.require('ui.Nodes.Button',function(require){
+    // 	var Button = require('ui.Nodes.Button');
+    	
+    // 	var samallBtn = new Button({
+    // 		container: '#div1',
+    // 		value:'hello button',
+    // 		templates:'onavo-ui-nodes-button-normal'
+    // 	});
+    // 	console.log(samallBtn)
+    // });
+    // ui-nodes-checkbox
+   onavo.require('ui.Nodes.Checkbox', function(require){
+       var Checkbox = require('Checkbox');
+
+       window.checkbox = new Checkbox({
+           container: '#div2',
+           checked: 'checked',
+           label: '跳过此步骤',
+           //readonly: true,
+           validate: function(e, value){
+               console.log(value);
+               if(!value){
+                   return {
+                       r: 0,
+                       msg: 'not empty'
+                   }
+               }
+           },
+           events: {
+               error: function(e, error){
+                   console.log(error);
+               }
+           },
+          //disabled: 'disabled'
+       })
+   });
+
+//ui.Nodes.Radio
+   onavo.require('ui.Nodes.Radio', function(require){
+       var Radio = require('Radio');
+
+       window.radio = new Radio({
+           container: '#div4',
+           //checked: 'checked',
+           label: '选项',
+           readonly: true,
+           validate: function(e, value){
+               console.log(value);
+               if(!value){
+                   return {
+                       r: 0,
+                       msg: 'not empty'
+                   }
+               }
+           },
+           events: {
+               error: function(e, error){
+                   console.log(error);
+               }
+           }
+           //disabled: 'disabled'
+       })
+   });
+    </script>
+
+</body>
+
+</html>
