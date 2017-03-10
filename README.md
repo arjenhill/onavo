@@ -1,4 +1,5 @@
 ## onavo.js
+
 ###JavaScript 工具库
 支持IE6以上，Firefox 3.5.3，Chrome 3.0，Safari 4.0.3，Opera 10.10以上的浏览器  
 git>>: [链接](https://github.com/jiayi2/onavo)  
@@ -6,7 +7,11 @@ git>>: [链接](https://github.com/jiayi2/onavo)
 
 ##change.log
 
-- --2016年9月21日  
+- --2017年3月1日--
+
+-- 新增模块化依赖ui库开发>>:[链接](https://github.com/jiayi2/onavo/tree/0.1.1)
+
+- --2016年9月21日  
 -- 新增$$TB.timeformat用于格式化日期
 ```
 $$TB.timeformat(new Date().getTime(), 'YYYY/MM/DD hh:mm:ss')
